@@ -1,3 +1,3 @@
 # odin-todo-list
 
-In this project I'm going to make a, well known, todo list.
+In this project I'm going to make a, well known, todo list, for The Odin Project curriculum.
