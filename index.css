@@ -3,7 +3,29 @@
   src: url(/src/font/Norse-Bold.otf);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+header {
+  color: white;
+  background-color: #1f244b;
+}
+
+#logo-container {
+  display: flex;
+  align-items: center;
+}
+
+#odin-logo {
+  height: 44px;
+  width: auto;
+}
+
 #logo-text {
+  color: white;
   font-family: Norse-Bold;
   font-size: 24px;
 }
