@@ -12,10 +12,10 @@
     (() => {
       var e;
       t.g.importScripts && (e = t.g.location + '');
-      var r = t.g.document;
-      if (!e && r && (r.currentScript && (e = r.currentScript.src), !e)) {
-        var n = r.getElementsByTagName('script');
-        if (n.length) for (var o = n.length - 1; o > -1 && !e; ) e = n[o--].src;
+      var n = t.g.document;
+      if (!e && n && (n.currentScript && (e = n.currentScript.src), !e)) {
+        var r = n.getElementsByTagName('script');
+        if (r.length) for (var o = r.length - 1; o > -1 && !e; ) e = r[o--].src;
       }
       if (!e)
         throw new Error(
@@ -30,18 +30,20 @@
   const e = t.p + '4f0f495b2f256748749f.png';
   (() => {
     const t = document.createElement('header'),
-      r = new Image();
+      n = document.createElement('div');
+    n.setAttribute('id', 'logo-container'), t.appendChild(n);
+    const r = new Image();
     (r.src = e),
       (r.alt = 'The Odin Project logo'),
       r.setAttribute('id', 'odin-logo'),
-      t.appendChild(r);
-    const n = document.createElement('p');
-    n.setAttribute('id', 'logo-text'),
-      (n.textContent = 'The Odin Project'),
-      t.appendChild(n);
+      n.appendChild(r);
     const o = document.createElement('p');
-    (o.textContent = 'Todo List'),
-      t.appendChild(o),
+    o.setAttribute('id', 'logo-text'),
+      (o.textContent = 'The Odin Project'),
+      n.appendChild(o);
+    const i = document.createElement('p');
+    (i.textContent = 'Todo List'),
+      t.appendChild(i),
       document.body.appendChild(t);
   })();
 })();
