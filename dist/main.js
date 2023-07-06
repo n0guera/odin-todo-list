@@ -55,7 +55,11 @@
       e.appendChild(n), document.body.appendChild(e);
     })(),
     (() => {
-      const e = document.createElement('footer');
-      document.body.appendChild(e);
+      const e = document.createElement('footer'),
+        t = document.createElement('p');
+      (t.textContent = 'Made with <3 for The Odin Project curriculum'),
+        t.classList.add('flex', 'font-20px', 'justify-center'),
+        e.appendChild(t),
+        document.body.appendChild(e);
     })();
 })();
