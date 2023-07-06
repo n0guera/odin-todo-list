@@ -1,58 +1,61 @@
 (() => {
   'use strict';
-  var t = {};
-  (t.g = (function () {
+  var e = {};
+  (e.g = (function () {
     if ('object' == typeof globalThis) return globalThis;
     try {
       return this || new Function('return this')();
-    } catch (t) {
+    } catch (e) {
       if ('object' == typeof window) return window;
     }
   })()),
     (() => {
-      var e;
-      t.g.importScripts && (e = t.g.location + '');
-      var n = t.g.document;
-      if (!e && n && (n.currentScript && (e = n.currentScript.src), !e)) {
+      var t;
+      e.g.importScripts && (t = e.g.location + '');
+      var n = e.g.document;
+      if (!t && n && (n.currentScript && (t = n.currentScript.src), !t)) {
         var o = n.getElementsByTagName('script');
-        if (o.length) for (var r = o.length - 1; r > -1 && !e; ) e = o[r--].src;
+        if (o.length) for (var c = o.length - 1; c > -1 && !t; ) t = o[c--].src;
       }
-      if (!e)
+      if (!t)
         throw new Error(
           'Automatic publicPath is not supported in this browser'
         );
-      (e = e
+      (t = t
         .replace(/#.*$/, '')
         .replace(/\?.*$/, '')
         .replace(/\/[^\/]+$/, '/')),
-        (t.p = e);
+        (e.p = t);
     })();
-  const e = t.p + '4f0f495b2f256748749f.png';
+  const t = e.p + '4f0f495b2f256748749f.png';
   (() => {
-    const t = document.createElement('header'),
+    const e = document.createElement('header'),
       n = document.createElement('div');
-    n.setAttribute('id', 'logo-container'), t.appendChild(n);
+    n.setAttribute('id', 'logo-container'), e.appendChild(n);
     const o = new Image();
-    (o.src = e),
+    (o.src = t),
       (o.alt = 'The Odin Project logo'),
       o.setAttribute('id', 'odin-logo'),
       n.appendChild(o);
-    const r = document.createElement('p');
-    r.setAttribute('id', 'logo-text'),
-      (r.textContent = 'The Odin Project'),
-      n.appendChild(r);
-    const c = document.createElement('h1');
-    (c.textContent = 'Todo List'),
-      c.classList.add('font-48px'),
-      t.appendChild(c),
-      document.body.appendChild(t);
+    const c = document.createElement('p');
+    c.setAttribute('id', 'logo-text'),
+      (c.textContent = 'The Odin Project'),
+      n.appendChild(c);
+    const r = document.createElement('h1');
+    (r.textContent = 'Todo List'),
+      r.classList.add('font-48px'),
+      e.appendChild(r),
+      document.body.appendChild(e);
   })(),
     (() => {
-      const t = document.createElement('main');
-      document.body.appendChild(t);
+      const e = document.createElement('main'),
+        t = document.createElement('nav');
+      e.appendChild(t);
+      const n = document.createElement('section');
+      e.appendChild(n), document.body.appendChild(e);
     })(),
     (() => {
-      const t = document.createElement('footer');
-      document.body.appendChild(t);
+      const e = document.createElement('footer');
+      document.body.appendChild(e);
     })();
 })();
