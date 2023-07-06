@@ -18,7 +18,7 @@ const createHeader = () => {
   logoText.textContent = 'The Odin Project';
   logoContainer.appendChild(logoText);
 
-  const headerText = document.createElement('p');
+  const headerText = document.createElement('h1');
   headerText.textContent = 'Todo List';
   headerElement.appendChild(headerText);
 
