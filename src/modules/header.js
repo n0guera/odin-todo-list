@@ -20,6 +20,7 @@ const createHeader = () => {
 
   const headerText = document.createElement('h1');
   headerText.textContent = 'Todo List';
+  headerText.classList.add('font-48px');
   headerElement.appendChild(headerText);
 
   document.body.appendChild(headerElement);

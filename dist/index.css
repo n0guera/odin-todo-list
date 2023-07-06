@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
 @font-face {
   font-family: Norse-Bold;
   src: url(/src/font/Norse-Bold.otf);
@@ -7,6 +9,10 @@
   margin: 0;
   padding: 0;
   border: 0;
+}
+
+body {
+  font-family: Rubik, sans-serif;
 }
 
 header {
@@ -28,4 +34,16 @@ header {
   color: white;
   font-family: Norse-Bold;
   font-size: 24px;
+}
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.font-48px {
+  font-size: 48px;
 }
