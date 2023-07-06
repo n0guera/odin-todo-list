@@ -41,7 +41,7 @@
     o.setAttribute('id', 'logo-text'),
       (o.textContent = 'The Odin Project'),
       n.appendChild(o);
-    const i = document.createElement('p');
+    const i = document.createElement('h1');
     (i.textContent = 'Todo List'),
       t.appendChild(i),
       document.body.appendChild(t);
