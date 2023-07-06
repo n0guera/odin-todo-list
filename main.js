@@ -43,6 +43,7 @@
       n.appendChild(r);
     const c = document.createElement('h1');
     (c.textContent = 'Todo List'),
+      c.classList.add('font-48px'),
       t.appendChild(c),
       document.body.appendChild(t);
   })(),
