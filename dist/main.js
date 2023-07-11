@@ -41,6 +41,10 @@
             n.appendChild(o);
         })(e, t, o),
         n.appendChild(o);
+    },
+    o = (e) => {
+      const t = document.createElement('article');
+      e.appendChild(t);
     };
   (() => {
     const e = document.createElement('header'),
@@ -66,8 +70,12 @@
       ((e) => {
         const t = document.createElement('nav'),
           o = document.createElement('ul');
-        t.appendChild(o), n('info', 'Test', t), e.appendChild(t);
+        t.appendChild(o), n('info', 'Test', o), e.appendChild(t);
       })(e),
+        ((e) => {
+          const t = document.createElement('section');
+          o(t), e.appendChild(t);
+        })(e),
         document.body.appendChild(e);
     })(),
     (() => {

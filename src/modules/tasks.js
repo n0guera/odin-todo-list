@@ -1,6 +1,9 @@
-const createTasksContainer = () => {
+import DOMStuff from './DOMStuff';
+
+const createTasksContainer = (parentNode) => {
   const taskContainer = document.createElement('section');
-  document.body.appendChild(taskContainer);
+  DOMStuff.createTaskElement(taskContainer);
+  parentNode.appendChild(taskContainer);
 };
 
 export default createTasksContainer;

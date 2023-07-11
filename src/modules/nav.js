@@ -6,7 +6,7 @@ const createNav = (parentNode) => {
   const navList = document.createElement('ul');
   navElement.appendChild(navList);
 
-  DOMStuff.createNavListItem('info', 'Test', navElement);
+  DOMStuff.createNavListItem('info', 'Test', navList);
   parentNode.appendChild(navElement);
 };
 
