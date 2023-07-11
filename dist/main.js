@@ -27,7 +27,21 @@
         .replace(/\/[^\/]+$/, '/')),
         (e.p = t);
     })();
-  const t = e.p + '4f0f495b2f256748749f.png';
+  const t = e.p + '4f0f495b2f256748749f.png',
+    n = (e, t, n) => {
+      const o = document.createElement('li');
+      o.classList.add('nav-item'),
+        ((e, t, n) => {
+          const o = document.createElement('button'),
+            c = document.createElement('span');
+          (c.textContent = e),
+            c.classList.add('material-icons'),
+            o.appendChild(c),
+            (o.innerHTML += t),
+            n.appendChild(o);
+        })(e, t, o),
+        n.appendChild(o);
+    };
   (() => {
     const e = document.createElement('header'),
       n = document.createElement('div');
@@ -41,18 +55,20 @@
     c.setAttribute('id', 'logo-text'),
       (c.textContent = 'The Odin Project'),
       n.appendChild(c);
-    const r = document.createElement('h1');
-    (r.textContent = 'Todo List'),
-      r.classList.add('font-48px'),
-      e.appendChild(r),
+    const d = document.createElement('h1');
+    (d.textContent = 'Todo List'),
+      d.classList.add('font-48px'),
+      e.appendChild(d),
       document.body.appendChild(e);
   })(),
     (() => {
-      const e = document.createElement('main'),
-        t = document.createElement('nav');
-      e.appendChild(t);
-      const n = document.createElement('section');
-      e.appendChild(n), document.body.appendChild(e);
+      const e = document.createElement('main');
+      ((e) => {
+        const t = document.createElement('nav'),
+          o = document.createElement('ul');
+        t.appendChild(o), n('info', 'Test', t), e.appendChild(t);
+      })(e),
+        document.body.appendChild(e);
     })(),
     (() => {
       const e = document.createElement('footer'),
