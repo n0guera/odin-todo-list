@@ -6,7 +6,16 @@ const createNav = (parentNode) => {
   const navList = document.createElement('ul');
   navElement.appendChild(navList);
 
-  DOMStuff.createNavListItem('info', 'Test', navList);
+  DOMStuff.createNavListItem('home', 'Home', navList);
+  DOMStuff.createNavListItem('today', 'Today', navList);
+  DOMStuff.createNavListItem('date_range', 'Week', navList);
+
+  const projectsTitle = document.createElement('h2');
+  projectsTitle.textContent = 'Projects';
+  navList.appendChild(projectsTitle);
+
+  DOMStuff.createNavListItem('add_circle', 'New project', navList);
+
   parentNode.appendChild(navElement);
 };
 
