@@ -38,6 +38,24 @@ footer {
   font-size: 24px;
 }
 
+main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 8px;
+}
+
+nav {
+  padding: 8px;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+li > button {
+  cursor: pointer;
+}
+
 .flex {
   display: flex;
 }

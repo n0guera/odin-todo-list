@@ -32,8 +32,9 @@
       const o = document.createElement('li');
       o.classList.add('nav-item'),
         ((e, t, n) => {
-          const o = document.createElement('button'),
-            c = document.createElement('span');
+          const o = document.createElement('button');
+          o.classList.add('font-20px', 'flex', 'align-center');
+          const c = document.createElement('span');
           (c.textContent = e),
             c.classList.add('material-icons'),
             o.appendChild(c),
@@ -70,7 +71,15 @@
       ((e) => {
         const t = document.createElement('nav'),
           o = document.createElement('ul');
-        t.appendChild(o), n('info', 'Test', o), e.appendChild(t);
+        t.appendChild(o),
+          n('home', 'Home', o),
+          n('today', 'Today', o),
+          n('date_range', 'Week', o);
+        const c = document.createElement('h2');
+        (c.textContent = 'Projects'),
+          o.appendChild(c),
+          n('add_circle', 'New project', o),
+          e.appendChild(t);
       })(e),
         ((e) => {
           const t = document.createElement('section');
