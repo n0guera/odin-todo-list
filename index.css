@@ -9,6 +9,7 @@
   margin: 0;
   padding: 0;
   border: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -41,11 +42,17 @@ footer {
 main {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  padding: 8px;
+  height: auto;
 }
 
 nav {
   padding: 8px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .nav-item {
@@ -54,6 +61,20 @@ nav {
 
 li > button {
   cursor: pointer;
+  padding: 5px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: white;
+}
+
+li > button:hover {
+  background-color: #b8b5b9;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .flex {
