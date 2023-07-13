@@ -59,15 +59,16 @@ ul {
   list-style-type: none;
 }
 
-li > button {
+.nav-btn {
   cursor: pointer;
   padding: 5px;
   width: 100%;
   border-radius: 4px;
   background-color: white;
+  gap: 4px;
 }
 
-li > button:hover {
+.nav-btn:hover {
   background-color: #b8b5b9;
 }
 
