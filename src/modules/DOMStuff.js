@@ -27,7 +27,25 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
-  return { createNavListItem, createTaskElement };
+  const addNewProject = (parentNode) => {
+    const newProjectPopup = document.createElement('div');
+    newProjectPopup.id = 'new-project-popup';
+    parentNode.appendChild(newProjectPopup);
+
+    const newProjectName = document.createElement('input');
+    newProjectName.type = 'text';
+    newProjectName.id = 'projectName';
+    newProjectName.name = 'projectName';
+    newProjectName.required = true;
+
+    const newProjectPopupButtons = document.createElement('div');
+    newProjectPopupButtons.classList.add('flex', 'font-20px');
+    newProjectPopup.appendChild(newProjectPopupButtons);
+
+    parentNode.appendChild(newProjectPopup);
+  };
+
+  return { createNavListItem, createTaskElement, addNewProject };
 })();
 
 export default DOMStuff;
