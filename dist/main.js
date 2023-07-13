@@ -33,7 +33,7 @@
       o.classList.add('nav-item'),
         ((e, t, n) => {
           const o = document.createElement('button');
-          o.classList.add('font-20px', 'flex', 'align-center');
+          o.classList.add('nav-btn', 'font-20px', 'flex', 'align-center');
           const c = document.createElement('span');
           (c.textContent = e),
             c.classList.add('material-icons'),

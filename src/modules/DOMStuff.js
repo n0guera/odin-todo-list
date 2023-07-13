@@ -1,7 +1,7 @@
 const DOMStuff = (() => {
   const createNavButton = (icon, text, parentNode) => {
     const buttonElement = document.createElement('button');
-    buttonElement.classList.add('font-20px', 'flex', 'align-center');
+    buttonElement.classList.add('nav-btn', 'font-20px', 'flex', 'align-center');
 
     const spanElement = document.createElement('span');
     spanElement.textContent = icon;
