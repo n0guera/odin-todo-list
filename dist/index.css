@@ -72,6 +72,32 @@ ul {
   background-color: #b8b5b9;
 }
 
+#projectName {
+  border: black 2px solid;
+  border-radius: 4px;
+}
+
+#new-project-popup-buttons {
+  justify-content: space-around;
+}
+
+.accept-btn,
+.cancel-btn {
+  color: white;
+  padding: 8px;
+  margin-top: 8px;
+  border: black 2px solid;
+  border-radius: 4px;
+}
+
+.accept-btn {
+  background-color: #8ab060;
+}
+
+.cancel-btn {
+  background-color: #b45252;
+}
+
 footer {
   position: absolute;
   bottom: 0;
