@@ -47,6 +47,32 @@
     c = (e) => {
       const t = document.createElement('article');
       e.appendChild(t);
+    },
+    o = () => {
+      document.querySelector('#new-project-btn').style.display = 'none';
+      const e = document.querySelector('#nav-list-projects'),
+        t = document.createElement('div');
+      (t.id = 'new-project-popup'), e.appendChild(t);
+      const n = document.createElement('input');
+      n.classList.add('font-20px'),
+        (n.type = 'text'),
+        (n.id = 'projectName'),
+        (n.name = 'projectName'),
+        (n.required = !0),
+        t.appendChild(n);
+      const c = document.createElement('div');
+      (c.id = 'new-project-popup-buttons'),
+        c.classList.add('flex', 'font-20px'),
+        t.appendChild(c);
+      const o = document.createElement('button');
+      (o.textContent = 'Ok'),
+        o.classList.add('accept-btn', 'flex', 'font-20px'),
+        c.appendChild(o);
+      const d = document.createElement('button');
+      (d.textContent = 'Cancel'),
+        d.classList.add('cancel-btn', 'flex', 'font-20px'),
+        c.appendChild(d),
+        e.appendChild(t);
     };
   (() => {
     const e = document.createElement('header'),
@@ -98,5 +124,6 @@
         t.classList.add('flex', 'font-20px', 'justify-center'),
         e.appendChild(t),
         document.body.appendChild(e);
-    })();
+    })(),
+    document.querySelector('#new-project-btn').addEventListener('click', o);
 })();
