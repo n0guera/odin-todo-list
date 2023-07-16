@@ -68,15 +68,15 @@
         const o = document.createElement('button');
         (o.id = 'accept-new-project-btn'),
           (o.textContent = 'Ok'),
-          o.classList.add('flex', 'font-20px'),
+          o.classList.add('flex', 'font-20px', 'justify-center'),
           c.appendChild(o);
         const d = document.createElement('button');
         (d.id = 'cancel-new-project-btn'),
           (d.textContent = 'Cancel'),
-          d.classList.add('flex', 'font-20px'),
+          d.classList.add('flex', 'font-20px', 'justify-center'),
           c.appendChild(d),
-          e.appendChild(t),
-          o.addEventListener('click', () => {});
+          o.addEventListener('click', () => {}),
+          e.appendChild(t);
       };
       return {
         initButtons: () => {
@@ -109,18 +109,22 @@
       const e = document.createElement('main');
       ((e) => {
         const t = document.createElement('nav'),
-          c = document.createElement('ul');
-        c.setAttribute('id', 'nav-list-tasks'),
-          t.appendChild(c),
-          n('home', 'Home', c),
-          n('today', 'Today', c),
-          n('date_range', 'Week', c);
-        const o = document.createElement('h2');
-        (o.textContent = 'Projects'), t.appendChild(o);
-        const d = document.createElement('ul');
-        d.setAttribute('id', 'nav-list-projects'),
-          t.appendChild(d),
-          n('add_circle', 'New project', d, 'new-project-btn'),
+          c = document.createElement('h2');
+        (c.textContent = 'Tasks'), (c.id = 'tasks-title'), t.appendChild(c);
+        const o = document.createElement('ul');
+        o.setAttribute('id', 'nav-list-tasks'),
+          t.appendChild(o),
+          n('home', 'Home', o),
+          n('today', 'Today', o),
+          n('date_range', 'Week', o);
+        const d = document.createElement('h2');
+        (d.textContent = 'Projects'),
+          (d.id = 'projects-title'),
+          t.appendChild(d);
+        const i = document.createElement('ul');
+        i.setAttribute('id', 'nav-list-projects'),
+          t.appendChild(i),
+          n('add_circle', 'New project', i, 'new-project-btn'),
           e.appendChild(t);
       })(e),
         ((e) => {
