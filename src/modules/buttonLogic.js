@@ -24,18 +24,19 @@ const Buttons = (() => {
     const acceptNewProjectBtn = document.createElement('button');
     acceptNewProjectBtn.id = 'accept-new-project-btn';
     acceptNewProjectBtn.textContent = 'Ok';
-    acceptNewProjectBtn.classList.add('flex', 'font-20px');
+    acceptNewProjectBtn.classList.add('flex', 'font-20px', 'justify-center');
     newProjectPopupButtons.appendChild(acceptNewProjectBtn);
 
     const cancelNewProjectBtn = document.createElement('button');
     cancelNewProjectBtn.id = 'cancel-new-project-btn';
     cancelNewProjectBtn.textContent = 'Cancel';
-    cancelNewProjectBtn.classList.add('flex', 'font-20px');
+    cancelNewProjectBtn.classList.add('flex', 'font-20px', 'justify-center');
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
-    projectList.appendChild(newProjectPopup);
     const addNewProject = () => {};
     acceptNewProjectBtn.addEventListener('click', addNewProject);
+
+    projectList.appendChild(newProjectPopup);
   };
 
   const initButtons = () => {

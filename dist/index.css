@@ -72,6 +72,13 @@ ul {
   background-color: #b8b5b9;
 }
 
+#tasks-title,
+#nav-list-tasks,
+#nav-list-projects,
+#projects-title {
+  margin: 8px;
+}
+
 #projectName {
   border: black 2px solid;
   border-radius: 4px;
@@ -79,6 +86,7 @@ ul {
 
 #new-project-popup-buttons {
   justify-content: space-around;
+  gap: 8px;
 }
 
 #accept-new-project-btn,
@@ -88,6 +96,8 @@ ul {
   margin-top: 8px;
   border: black 2px solid;
   border-radius: 4px;
+  font-weight: bold;
+  width: 100%;
 }
 
 #accept-new-project-btn {
