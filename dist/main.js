@@ -66,14 +66,17 @@
           c.classList.add('flex', 'font-20px'),
           t.appendChild(c);
         const o = document.createElement('button');
-        (o.textContent = 'Ok'),
-          o.classList.add('accept-btn', 'flex', 'font-20px'),
+        (o.id = 'accept-new-project-btn'),
+          (o.textContent = 'Ok'),
+          o.classList.add('flex', 'font-20px'),
           c.appendChild(o);
         const d = document.createElement('button');
-        (d.textContent = 'Cancel'),
-          d.classList.add('cancel-btn', 'flex', 'font-20px'),
+        (d.id = 'cancel-new-project-btn'),
+          (d.textContent = 'Cancel'),
+          d.classList.add('flex', 'font-20px'),
           c.appendChild(d),
-          e.appendChild(t);
+          e.appendChild(t),
+          o.addEventListener('click', () => {});
       };
       return {
         initButtons: () => {

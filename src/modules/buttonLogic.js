@@ -1,5 +1,5 @@
 const Buttons = (() => {
-  const addNewProject = () => {
+  const addNewProjectPopup = () => {
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.style.display = 'none';
 
@@ -21,22 +21,26 @@ const Buttons = (() => {
     newProjectPopupButtons.classList.add('flex', 'font-20px');
     newProjectPopup.appendChild(newProjectPopupButtons);
 
-    const acceptBtn = document.createElement('button');
-    acceptBtn.textContent = 'Ok';
-    acceptBtn.classList.add('accept-btn', 'flex', 'font-20px');
-    newProjectPopupButtons.appendChild(acceptBtn);
+    const acceptNewProjectBtn = document.createElement('button');
+    acceptNewProjectBtn.id = 'accept-new-project-btn';
+    acceptNewProjectBtn.textContent = 'Ok';
+    acceptNewProjectBtn.classList.add('flex', 'font-20px');
+    newProjectPopupButtons.appendChild(acceptNewProjectBtn);
 
-    const cancelBtn = document.createElement('button');
-    cancelBtn.textContent = 'Cancel';
-    cancelBtn.classList.add('cancel-btn', 'flex', 'font-20px');
-    newProjectPopupButtons.appendChild(cancelBtn);
+    const cancelNewProjectBtn = document.createElement('button');
+    cancelNewProjectBtn.id = 'cancel-new-project-btn';
+    cancelNewProjectBtn.textContent = 'Cancel';
+    cancelNewProjectBtn.classList.add('flex', 'font-20px');
+    newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
     projectList.appendChild(newProjectPopup);
+    const addNewProject = () => {};
+    acceptNewProjectBtn.addEventListener('click', addNewProject);
   };
 
   const initButtons = () => {
     const newProjectBtn = document.querySelector('#new-project-btn');
-    newProjectBtn.addEventListener('click', addNewProject);
+    newProjectBtn.addEventListener('click', addNewProjectPopup);
   };
 
   return { initButtons };

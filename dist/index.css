@@ -81,8 +81,8 @@ ul {
   justify-content: space-around;
 }
 
-.accept-btn,
-.cancel-btn {
+#accept-new-project-btn,
+#cancel-new-project-btn {
   color: white;
   padding: 8px;
   margin-top: 8px;
@@ -90,11 +90,11 @@ ul {
   border-radius: 4px;
 }
 
-.accept-btn {
+#accept-new-project-btn {
   background-color: #8ab060;
 }
 
-.cancel-btn {
+#cancel-new-project-btn {
   background-color: #b45252;
 }
 
