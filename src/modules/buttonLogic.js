@@ -1,3 +1,5 @@
+import todoStorage from './todoStorage';
+
 const Buttons = (() => {
   const addNewProjectPopup = () => {
     const newProjectBtn = document.querySelector('#new-project-btn');
@@ -33,7 +35,9 @@ const Buttons = (() => {
     cancelNewProjectBtn.classList.add('flex', 'font-20px', 'justify-center');
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
-    const addNewProject = () => {};
+    const addNewProject = () => {
+      todoStorage.storeNewProject();
+    };
     acceptNewProjectBtn.addEventListener('click', addNewProject);
 
     projectList.appendChild(newProjectPopup);
