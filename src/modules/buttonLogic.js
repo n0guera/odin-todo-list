@@ -36,7 +36,9 @@ const Buttons = (() => {
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
     const addNewProject = () => {
-      todoStorage.storeNewProject();
+      todoStorage.storeNewProject(newProjectName.value);
+      newProjectPopup.style.display = 'none';
+      newProjectBtn.style.display = 'flex';
     };
     acceptNewProjectBtn.addEventListener('click', addNewProject);
 

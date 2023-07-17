@@ -48,38 +48,41 @@
       const t = document.createElement('article');
       e.appendChild(t);
     },
-    o = () => {},
+    o = (e) => {
+      localStorage.setItem('projectName', e);
+    },
     d = (() => {
       const e = () => {
-        document.querySelector('#new-project-btn').style.display = 'none';
-        const e = document.querySelector('#nav-list-projects'),
-          t = document.createElement('div');
-        (t.id = 'new-project-popup'), e.appendChild(t);
-        const n = document.createElement('input');
-        n.classList.add('font-20px'),
-          (n.type = 'text'),
-          (n.id = 'projectName'),
-          (n.name = 'projectName'),
-          (n.required = !0),
-          t.appendChild(n);
-        const c = document.createElement('div');
-        (c.id = 'new-project-popup-buttons'),
-          c.classList.add('flex', 'font-20px'),
-          t.appendChild(c);
-        const d = document.createElement('button');
-        (d.id = 'accept-new-project-btn'),
-          (d.textContent = 'Ok'),
-          d.classList.add('flex', 'font-20px', 'justify-center'),
-          c.appendChild(d);
+        const e = document.querySelector('#new-project-btn');
+        e.style.display = 'none';
+        const t = document.querySelector('#nav-list-projects'),
+          n = document.createElement('div');
+        (n.id = 'new-project-popup'), t.appendChild(n);
+        const c = document.createElement('input');
+        c.classList.add('font-20px'),
+          (c.type = 'text'),
+          (c.id = 'projectName'),
+          (c.name = 'projectName'),
+          (c.required = !0),
+          n.appendChild(c);
+        const d = document.createElement('div');
+        (d.id = 'new-project-popup-buttons'),
+          d.classList.add('flex', 'font-20px'),
+          n.appendChild(d);
+        const a = document.createElement('button');
+        (a.id = 'accept-new-project-btn'),
+          (a.textContent = 'Ok'),
+          a.classList.add('flex', 'font-20px', 'justify-center'),
+          d.appendChild(a);
         const i = document.createElement('button');
         (i.id = 'cancel-new-project-btn'),
           (i.textContent = 'Cancel'),
           i.classList.add('flex', 'font-20px', 'justify-center'),
-          c.appendChild(i),
-          d.addEventListener('click', () => {
-            o.storeNewProject();
+          d.appendChild(i),
+          a.addEventListener('click', () => {
+            o(c.value), (n.style.display = 'none'), (e.style.display = 'flex');
           }),
-          e.appendChild(t);
+          t.appendChild(n);
       };
       return {
         initButtons: () => {
@@ -124,10 +127,10 @@
         (d.textContent = 'Projects'),
           (d.id = 'projects-title'),
           t.appendChild(d);
-        const i = document.createElement('ul');
-        i.setAttribute('id', 'nav-list-projects'),
-          t.appendChild(i),
-          n('add_circle', 'New project', i, 'new-project-btn'),
+        const a = document.createElement('ul');
+        a.setAttribute('id', 'nav-list-projects'),
+          t.appendChild(a),
+          n('add_circle', 'New project', a, 'new-project-btn'),
           e.appendChild(t);
       })(e),
         ((e) => {

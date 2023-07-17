@@ -1,7 +1,9 @@
 const todoStorage = (() => {
-  const storeNewProject = () => {};
+  const storeNewProject = (projectName) => {
+    localStorage.setItem('projectName', projectName);
+  };
 
-  return storeNewProject;
+  return { storeNewProject };
 })();
 
 export default todoStorage;
