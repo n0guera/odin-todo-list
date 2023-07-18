@@ -31,11 +31,12 @@
     n = (() => {
       const e = [];
       return {
+        projects: e,
         storeNewProject: (t) => {
           const n = ((e, t) => ({ projectName: e, tasks: [] }))(t);
           e.push(n), localStorage.setItem('projects', JSON.stringify(e));
         },
-        projects: e,
+        getProjectList: () => JSON.parse(localStorage.getItem('projects')),
       };
     })(),
     c = (() => {
@@ -93,11 +94,11 @@
           (d.textContent = 'Ok'),
           d.classList.add('flex', 'font-20px', 'justify-center'),
           a.appendChild(d);
-        const i = document.createElement('button');
-        (i.id = 'cancel-new-project-btn'),
-          (i.textContent = 'Cancel'),
-          i.classList.add('flex', 'font-20px', 'justify-center'),
-          a.appendChild(i),
+        const s = document.createElement('button');
+        (s.id = 'cancel-new-project-btn'),
+          (s.textContent = 'Cancel'),
+          s.classList.add('flex', 'font-20px', 'justify-center'),
+          a.appendChild(s),
           d.addEventListener('click', () => {
             const t = document.querySelector('#nav-list-projects');
             n.storeNewProject(r.value),

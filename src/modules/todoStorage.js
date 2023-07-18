@@ -9,7 +9,12 @@ const todoStorage = (() => {
     localStorage.setItem('projects', JSON.stringify(projects));
   };
 
-  return { storeNewProject, projects };
+  const getProjectList = () => {
+    const projectList = JSON.parse(localStorage.getItem('projects'));
+    return projectList;
+  };
+
+  return { projects, storeNewProject, getProjectList };
 })();
 
 export default todoStorage;
