@@ -1,4 +1,5 @@
 import todoStorage from './todoStorage';
+import DOMStuff from './DOMStuff';
 
 const Buttons = (() => {
   const addNewProjectPopup = () => {
@@ -35,12 +36,21 @@ const Buttons = (() => {
     cancelNewProjectBtn.classList.add('flex', 'font-20px', 'justify-center');
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
-    const addNewProject = () => {
+    const addProject = () => {
+      const navListProjects = document.querySelector('#nav-list-projects');
+
       todoStorage.storeNewProject(newProjectName.value);
       newProjectPopup.style.display = 'none';
       newProjectBtn.style.display = 'flex';
+      DOMStuff.updateProjectList();
+      DOMStuff.createNavListItem(
+        'add_circle',
+        'New project',
+        navListProjects,
+        'new-project-btn'
+      );
     };
-    acceptNewProjectBtn.addEventListener('click', addNewProject);
+    acceptNewProjectBtn.addEventListener('click', addProject);
 
     projectList.appendChild(newProjectPopup);
   };

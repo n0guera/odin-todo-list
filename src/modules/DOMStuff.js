@@ -1,3 +1,5 @@
+import todoStorage from './todoStorage';
+
 const DOMStuff = (() => {
   const createNavButton = (icon, text, parentNode, id) => {
     const buttonElement = document.createElement('button');
@@ -28,7 +30,16 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
-  return { createNavListItem, createTaskElement };
+  const updateProjectList = () => {
+    const projectList = document.querySelector('#nav-list-projects');
+    projectList.innerHTML = '';
+
+    todoStorage.projects.forEach((project) => {
+      createNavListItem('folder', `${project.projectName}`, projectList);
+    });
+  };
+
+  return { createNavListItem, createTaskElement, updateProjectList };
 })();
 
 export default DOMStuff;
