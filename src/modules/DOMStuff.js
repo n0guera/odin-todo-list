@@ -30,16 +30,26 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
-  const updateProjectList = () => {
-    const projectList = document.querySelector('#nav-list-projects');
-    projectList.innerHTML = '';
+  const updateNavProjectList = () => {
+    const navListProjects = document.querySelector('#nav-list-projects');
 
-    todoStorage.projects.forEach((project) => {
-      createNavListItem('folder', `${project.projectName}`, projectList);
+    todoStorage.updateProjectList();
+
+    navListProjects.innerHTML = '';
+
+    todoStorage.getProjectList().forEach((project) => {
+      createNavListItem('folder', `${project.projectName}`, navListProjects);
     });
+
+    createNavListItem(
+      'add_circle',
+      'New project',
+      navListProjects,
+      'new-project-btn'
+    );
   };
 
-  return { createNavListItem, createTaskElement, updateProjectList };
+  return { createNavListItem, createTaskElement, updateNavProjectList };
 })();
 
 export default DOMStuff;

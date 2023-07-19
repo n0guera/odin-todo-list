@@ -6,10 +6,10 @@ const Buttons = (() => {
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.style.display = 'none';
 
-    const projectList = document.querySelector('#nav-list-projects');
+    const navListProjects = document.querySelector('#nav-list-projects');
     const newProjectPopup = document.createElement('div');
     newProjectPopup.id = 'new-project-popup';
-    projectList.appendChild(newProjectPopup);
+    navListProjects.appendChild(newProjectPopup);
 
     const newProjectName = document.createElement('input');
     newProjectName.classList.add('font-20px');
@@ -37,25 +37,18 @@ const Buttons = (() => {
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
     const addProject = () => {
-      const navListProjects = document.querySelector('#nav-list-projects');
-
       todoStorage.storeNewProject(newProjectName.value);
+
       newProjectPopup.style.display = 'none';
-      newProjectBtn.style.display = 'flex';
-      DOMStuff.updateProjectList();
-      DOMStuff.createNavListItem(
-        'add_circle',
-        'New project',
-        navListProjects,
-        'new-project-btn'
-      );
+      DOMStuff.updateNavProjectList();
     };
     acceptNewProjectBtn.addEventListener('click', addProject);
 
-    projectList.appendChild(newProjectPopup);
+    navListProjects.appendChild(newProjectPopup);
   };
 
   const initButtons = () => {
+    DOMStuff.updateNavProjectList();
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.addEventListener('click', addNewProjectPopup);
   };
