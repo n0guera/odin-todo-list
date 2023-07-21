@@ -28,7 +28,7 @@ const createNav = (parentNode) => {
   DOMStuff.createNavListItem(
     'add_circle',
     'New project',
-    navListProjects,
+    navElement,
     'new-project-btn'
   );
 

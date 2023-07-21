@@ -39,23 +39,16 @@ const DOMStuff = (() => {
     projects.forEach((project) => {
       createNavListItem('folder', `${project.projectName}`, navListProjects);
     });
-
-    createNavListItem(
-      'add_circle',
-      'New project',
-      navListProjects,
-      'new-project-btn'
-    );
   };
 
   const addNewProjectPopup = () => {
+    const navElement = document.querySelector('nav');
+
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.style.display = 'none';
 
-    const navListProjects = document.querySelector('#nav-list-projects');
     const newProjectPopup = document.createElement('div');
     newProjectPopup.id = 'new-project-popup';
-    navListProjects.appendChild(newProjectPopup);
 
     const newProjectName = document.createElement('input');
     newProjectName.classList.add('font-20px');
@@ -83,15 +76,14 @@ const DOMStuff = (() => {
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
     const addProject = () => {
-      newProjectPopup.style.display = 'none';
+      newProjectPopup.remove();
       todoStorage.storeNewProject(newProjectName.value);
-
       updateNavProjectList();
-      newProjectBtn.addEventListener('click', addNewProjectPopup);
+      newProjectBtn.style.display = 'flex';
     };
-    acceptNewProjectBtn.addEventListener('click', addProject);
 
-    navListProjects.appendChild(newProjectPopup);
+    acceptNewProjectBtn.addEventListener('click', addProject);
+    navElement.appendChild(newProjectPopup);
   };
 
   return {

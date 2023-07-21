@@ -7,5 +7,5 @@ import DOMStuff from './modules/DOMStuff';
 createHeader();
 createMainContent();
 createFooter();
-Buttons.initButtons();
 window.addEventListener('load', DOMStuff.updateNavProjectList());
+Buttons.initButtons();
