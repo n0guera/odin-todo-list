@@ -37,9 +37,9 @@ const Buttons = (() => {
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
     const addProject = () => {
+      newProjectPopup.style.display = 'none';
       todoStorage.storeNewProject(newProjectName.value);
 
-      newProjectPopup.style.display = 'none';
       DOMStuff.updateNavProjectList();
     };
     acceptNewProjectBtn.addEventListener('click', addProject);
@@ -48,12 +48,12 @@ const Buttons = (() => {
   };
 
   const initButtons = () => {
-    DOMStuff.updateNavProjectList();
+    window.addEventListener('load', DOMStuff.updateNavProjectList());
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.addEventListener('click', addNewProjectPopup);
   };
 
-  return { initButtons };
+  return { initButtons, addNewProjectPopup };
 })();
 
 export default Buttons;

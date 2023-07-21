@@ -29,10 +29,10 @@
     })();
   const t = e.p + '4f0f495b2f256748749f.png',
     n = (() => {
-      const e = [],
-        t = () => JSON.parse(localStorage.getItem('projects')),
+      let e = [];
+      const t = () => JSON.parse(localStorage.getItem('projects')) || [],
         n = () => {
-          e.push(t());
+          e = t();
         };
       return {
         projects: e,
@@ -69,10 +69,10 @@
           e.appendChild(t);
         },
         updateNavProjectList: () => {
-          const t = document.querySelector('#nav-list-projects');
-          n.updateProjectList(),
-            (t.innerHTML = ''),
-            n.getProjectList().forEach((n) => {
+          const t = document.querySelector('#nav-list-projects'),
+            c = n.getProjectList();
+          (t.innerHTML = ''),
+            c.forEach((n) => {
               e('folder', `${n.projectName}`, t);
             }),
             e('add_circle', 'New project', t, 'new-project-btn');
@@ -96,30 +96,31 @@
         (a.id = 'new-project-popup-buttons'),
           a.classList.add('flex', 'font-20px'),
           t.appendChild(a);
-        const r = document.createElement('button');
-        (r.id = 'accept-new-project-btn'),
-          (r.textContent = 'Ok'),
-          r.classList.add('flex', 'font-20px', 'justify-center'),
-          a.appendChild(r);
         const d = document.createElement('button');
-        (d.id = 'cancel-new-project-btn'),
-          (d.textContent = 'Cancel'),
+        (d.id = 'accept-new-project-btn'),
+          (d.textContent = 'Ok'),
           d.classList.add('flex', 'font-20px', 'justify-center'),
-          a.appendChild(d),
-          r.addEventListener('click', () => {
-            n.storeNewProject(o.value),
-              (t.style.display = 'none'),
+          a.appendChild(d);
+        const r = document.createElement('button');
+        (r.id = 'cancel-new-project-btn'),
+          (r.textContent = 'Cancel'),
+          r.classList.add('flex', 'font-20px', 'justify-center'),
+          a.appendChild(r),
+          d.addEventListener('click', () => {
+            (t.style.display = 'none'),
+              n.storeNewProject(o.value),
               c.updateNavProjectList();
           }),
           e.appendChild(t);
       };
       return {
         initButtons: () => {
-          c.updateNavProjectList(),
+          window.addEventListener('load', c.updateNavProjectList()),
             document
               .querySelector('#new-project-btn')
               .addEventListener('click', e);
         },
+        addNewProjectPopup: e,
       };
     })();
   (() => {
@@ -157,13 +158,13 @@
         (a.textContent = 'Projects'),
           (a.id = 'projects-title'),
           t.appendChild(a);
-        const r = document.createElement('ul');
-        r.setAttribute('id', 'nav-list-projects'),
-          t.appendChild(r),
+        const d = document.createElement('ul');
+        d.setAttribute('id', 'nav-list-projects'),
+          t.appendChild(d),
           c.createNavListItem(
             'add_circle',
             'New project',
-            r,
+            d,
             'new-project-btn'
           ),
           e.appendChild(t);

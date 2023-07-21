@@ -32,12 +32,11 @@ const DOMStuff = (() => {
 
   const updateNavProjectList = () => {
     const navListProjects = document.querySelector('#nav-list-projects');
-
-    todoStorage.updateProjectList();
+    const projects = todoStorage.getProjectList();
 
     navListProjects.innerHTML = '';
 
-    todoStorage.getProjectList().forEach((project) => {
+    projects.forEach((project) => {
       createNavListItem('folder', `${project.projectName}`, navListProjects);
     });
 
