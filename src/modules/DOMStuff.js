@@ -53,7 +53,7 @@ const DOMStuff = (() => {
     const newProjectName = document.createElement('input');
     newProjectName.classList.add('font-20px');
     newProjectName.type = 'text';
-    newProjectName.id = 'projectName';
+    newProjectName.id = 'project-name';
     newProjectName.name = 'projectName';
     newProjectName.required = true;
     newProjectPopup.appendChild(newProjectName);
@@ -81,8 +81,13 @@ const DOMStuff = (() => {
       updateNavProjectList();
       newProjectBtn.style.display = 'flex';
     };
-
     acceptNewProjectBtn.addEventListener('click', addProject);
+
+    const cancelNewProject = () => {
+      newProjectPopup.remove();
+      newProjectBtn.style.display = 'flex';
+    };
+    cancelNewProjectBtn.addEventListener('click', cancelNewProject);
     navElement.appendChild(newProjectPopup);
   };
 

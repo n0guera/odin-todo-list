@@ -86,7 +86,7 @@
           const a = document.createElement('input');
           a.classList.add('font-20px'),
             (a.type = 'text'),
-            (a.id = 'projectName'),
+            (a.id = 'project-name'),
             (a.name = 'projectName'),
             (a.required = !0),
             o.appendChild(a);
@@ -109,6 +109,9 @@
                 n.storeNewProject(a.value),
                 t(),
                 (c.style.display = 'flex');
+            }),
+            i.addEventListener('click', () => {
+              o.remove(), (c.style.display = 'flex');
             }),
             e.appendChild(o);
         },
