@@ -82,9 +82,10 @@ ul {
   margin: 8px;
 }
 
-#projectName {
+#project-name {
   border: black 2px solid;
   border-radius: 4px;
+  width: 100%;
 }
 
 #new-project-popup-buttons {
@@ -101,6 +102,7 @@ ul {
   border-radius: 4px;
   font-weight: bold;
   width: 100%;
+  cursor: pointer;
 }
 
 #accept-new-project-btn {
