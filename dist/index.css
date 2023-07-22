@@ -42,7 +42,10 @@ footer {
 main {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  height: auto;
+  position: absolute;
+  top: 117px;
+  bottom: 40px;
+  width: 100%;
 }
 
 nav {
