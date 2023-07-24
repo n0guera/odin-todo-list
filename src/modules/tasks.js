@@ -1,10 +1,20 @@
-const createTasksContainer = (parentNode) => {
-  const taskContainer = document.createElement('section');
+const createTaskContainer = (parentNode) => {
+  const sectionElement = document.createElement('section');
+
+  const elementContainer = document.createElement('div');
+  elementContainer.id = 'element-container';
+  sectionElement.appendChild(elementContainer);
 
   const pageTitle = document.createElement('h2');
   pageTitle.id = 'page-title';
-  taskContainer.appendChild(pageTitle);
-  parentNode.appendChild(taskContainer);
+  pageTitle.textContent = 'Home';
+  elementContainer.appendChild(pageTitle);
+
+  const taskContainer = document.createElement('div');
+  taskContainer.id = 'task-container';
+  elementContainer.appendChild(taskContainer);
+
+  parentNode.appendChild(sectionElement);
 };
 
-export default createTasksContainer;
+export default createTaskContainer;
