@@ -113,6 +113,14 @@ ul {
   background-color: #b45252;
 }
 
+section {
+  background-color: #b8b5b9;
+}
+
+article {
+  background-color: #f2f0e5;
+}
+
 footer {
   position: absolute;
   bottom: 0;
