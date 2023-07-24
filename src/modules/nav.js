@@ -12,9 +12,9 @@ const createNav = (parentNode) => {
   navListTasks.setAttribute('id', 'nav-list-tasks');
   navElement.appendChild(navListTasks);
 
-  DOMStuff.createNavListItem('home', 'Home', navListTasks);
-  DOMStuff.createNavListItem('today', 'Today', navListTasks);
-  DOMStuff.createNavListItem('date_range', 'Week', navListTasks);
+  DOMStuff.createNavListItem('home', 'Home', navListTasks, 'home-tab');
+  DOMStuff.createNavListItem('today', 'Today', navListTasks, 'today-tab');
+  DOMStuff.createNavListItem('date_range', 'Week', navListTasks, 'week-tab');
 
   const projectsTitle = document.createElement('h2');
   projectsTitle.textContent = 'Projects';

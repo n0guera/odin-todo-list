@@ -115,12 +115,34 @@
             }),
             e.appendChild(o);
         },
+        displayPageTitle: (e) => {
+          const t = document.querySelector('#page-title');
+          switch (e.target.id) {
+            case 'home-tab':
+              t.textContent = 'Home';
+              break;
+            case 'today-tab':
+              t.textContent = 'Today';
+              break;
+            case 'week-tab':
+              t.textContent = 'Week';
+          }
+        },
       };
     })(),
     o = () => {
       document
-        .querySelector('#new-project-btn')
-        .addEventListener('click', c.addNewProjectPopup);
+        .querySelector('#home-tab')
+        .addEventListener('click', c.displayPageTitle),
+        document
+          .querySelector('#today-tab')
+          .addEventListener('click', c.displayPageTitle),
+        document
+          .querySelector('#week-tab')
+          .addEventListener('click', c.displayPageTitle),
+        document
+          .querySelector('#new-project-btn')
+          .addEventListener('click', c.addNewProjectPopup);
     };
   (() => {
     const e = document.createElement('header'),
@@ -143,36 +165,37 @@
   })(),
     (() => {
       const e = document.createElement('main');
-      ((e) => {
-        const t = document.createElement('nav'),
-          n = document.createElement('h2');
-        (n.textContent = 'Tasks'), (n.id = 'tasks-title'), t.appendChild(n);
-        const o = document.createElement('ul');
-        o.setAttribute('id', 'nav-list-tasks'),
-          t.appendChild(o),
-          c.createNavListItem('home', 'Home', o),
-          c.createNavListItem('today', 'Today', o),
-          c.createNavListItem('date_range', 'Week', o);
-        const a = document.createElement('h2');
-        (a.textContent = 'Projects'),
-          (a.id = 'projects-title'),
-          t.appendChild(a);
-        const d = document.createElement('ul');
-        d.setAttribute('id', 'nav-list-projects'),
-          t.appendChild(d),
-          c.createNavListItem(
-            'add_circle',
-            'New project',
-            t,
-            'new-project-btn'
-          ),
-          e.appendChild(t);
-      })(e),
+      document.body.appendChild(e),
         ((e) => {
-          const t = document.createElement('section');
-          c.createTaskElement(t), e.appendChild(t);
+          const t = document.createElement('nav'),
+            n = document.createElement('h2');
+          (n.textContent = 'Tasks'), (n.id = 'tasks-title'), t.appendChild(n);
+          const o = document.createElement('ul');
+          o.setAttribute('id', 'nav-list-tasks'),
+            t.appendChild(o),
+            c.createNavListItem('home', 'Home', o, 'home-tab'),
+            c.createNavListItem('today', 'Today', o, 'today-tab'),
+            c.createNavListItem('date_range', 'Week', o, 'week-tab');
+          const a = document.createElement('h2');
+          (a.textContent = 'Projects'),
+            (a.id = 'projects-title'),
+            t.appendChild(a);
+          const d = document.createElement('ul');
+          d.setAttribute('id', 'nav-list-projects'),
+            t.appendChild(d),
+            c.createNavListItem(
+              'add_circle',
+              'New project',
+              t,
+              'new-project-btn'
+            ),
+            e.appendChild(t);
         })(e),
-        document.body.appendChild(e);
+        ((e) => {
+          const t = document.createElement('section'),
+            n = document.createElement('h2');
+          (n.id = 'page-title'), t.appendChild(n), e.appendChild(t);
+        })(e);
     })(),
     (() => {
       const e = document.createElement('footer'),

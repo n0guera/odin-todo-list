@@ -91,11 +91,33 @@ const DOMStuff = (() => {
     navElement.appendChild(newProjectPopup);
   };
 
+  const displayPageTitle = (element) => {
+    const pageTitleElement = document.querySelector('#page-title');
+
+    switch (element.target.id) {
+      case 'home-tab':
+        pageTitleElement.textContent = 'Home';
+        break;
+
+      case 'today-tab':
+        pageTitleElement.textContent = 'Today';
+        break;
+
+      case 'week-tab':
+        pageTitleElement.textContent = 'Week';
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return {
     createNavListItem,
     createTaskElement,
     updateNavProjectList,
     addNewProjectPopup,
+    displayPageTitle,
   };
 })();
 

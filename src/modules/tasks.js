@@ -1,8 +1,9 @@
-import DOMStuff from './DOMStuff';
-
 const createTasksContainer = (parentNode) => {
   const taskContainer = document.createElement('section');
-  DOMStuff.createTaskElement(taskContainer);
+
+  const pageTitle = document.createElement('h2');
+  pageTitle.id = 'page-title';
+  taskContainer.appendChild(pageTitle);
   parentNode.appendChild(taskContainer);
 };
 
