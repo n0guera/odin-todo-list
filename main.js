@@ -193,8 +193,12 @@
         })(e),
         ((e) => {
           const t = document.createElement('section'),
-            n = document.createElement('h2');
-          (n.id = 'page-title'), t.appendChild(n), e.appendChild(t);
+            n = document.createElement('div');
+          (n.id = 'element-container'), t.appendChild(n);
+          const c = document.createElement('h2');
+          (c.id = 'page-title'), (c.textContent = 'Home'), n.appendChild(c);
+          const o = document.createElement('div');
+          (o.id = 'task-container'), n.appendChild(o), e.appendChild(t);
         })(e);
     })(),
     (() => {
