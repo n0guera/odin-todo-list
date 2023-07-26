@@ -115,8 +115,8 @@ const DOMStuff = (() => {
   const addNewTaskPopup = () => {
     const elementContainer = document.querySelector('#element-container');
 
-    const newProjectBtn = document.querySelector('#new-task-btn');
-    newProjectBtn.style.display = 'none';
+    const newTaskBtn = document.querySelector('#new-task-btn');
+    newTaskBtn.style.display = 'none';
 
     const newTaskPopup = document.createElement('div');
     newTaskPopup.id = 'new-task-popup';
@@ -145,6 +145,12 @@ const DOMStuff = (() => {
     cancelNewTaskBtn.textContent = 'Cancel';
     cancelNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
     newTaskPopupButtons.appendChild(cancelNewTaskBtn);
+
+    const cancelNewTask = () => {
+      newTaskPopup.remove();
+      newTaskBtn.style.display = 'flex';
+    };
+    cancelNewTaskBtn.addEventListener('click', cancelNewTask);
 
     elementContainer.appendChild(newTaskPopup);
   };

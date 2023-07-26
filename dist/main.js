@@ -129,32 +129,36 @@
           }
         },
         addNewTaskPopup: () => {
-          const e = document.querySelector('#element-container');
-          document.querySelector('#new-task-btn').style.display = 'none';
-          const t = document.createElement('div');
-          t.id = 'new-task-popup';
-          const n = document.createElement('input');
-          n.classList.add('font-20px'),
-            (n.type = 'text'),
-            (n.id = 'task-name'),
-            (n.name = 'taskName'),
-            (n.required = !0),
-            t.appendChild(n);
-          const c = document.createElement('div');
-          (c.id = 'new-task-popup-buttons'),
-            c.classList.add('flex', 'font-20px'),
-            t.appendChild(c);
-          const a = document.createElement('button');
-          (a.id = 'accept-new-task-btn'),
-            (a.textContent = 'Ok'),
-            a.classList.add('flex', 'font-20px', 'justify-center'),
-            c.appendChild(a);
+          const e = document.querySelector('#element-container'),
+            t = document.querySelector('#new-task-btn');
+          t.style.display = 'none';
+          const n = document.createElement('div');
+          n.id = 'new-task-popup';
+          const c = document.createElement('input');
+          c.classList.add('font-20px'),
+            (c.type = 'text'),
+            (c.id = 'task-name'),
+            (c.name = 'taskName'),
+            (c.required = !0),
+            n.appendChild(c);
+          const a = document.createElement('div');
+          (a.id = 'new-task-popup-buttons'),
+            a.classList.add('flex', 'font-20px'),
+            n.appendChild(a);
           const o = document.createElement('button');
-          (o.id = 'cancel-new-task-btn'),
-            (o.textContent = 'Cancel'),
+          (o.id = 'accept-new-task-btn'),
+            (o.textContent = 'Ok'),
             o.classList.add('flex', 'font-20px', 'justify-center'),
-            c.appendChild(o),
-            e.appendChild(t);
+            a.appendChild(o);
+          const d = document.createElement('button');
+          (d.id = 'cancel-new-task-btn'),
+            (d.textContent = 'Cancel'),
+            d.classList.add('flex', 'font-20px', 'justify-center'),
+            a.appendChild(d),
+            d.addEventListener('click', () => {
+              n.remove(), (t.style.display = 'flex');
+            }),
+            e.appendChild(n);
         },
       };
     })(),
