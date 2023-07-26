@@ -1,3 +1,5 @@
+import DOMStuff from './DOMStuff';
+
 const createTaskContainer = (parentNode) => {
   const sectionElement = document.createElement('section');
 
@@ -9,6 +11,13 @@ const createTaskContainer = (parentNode) => {
   pageTitle.id = 'page-title';
   pageTitle.textContent = 'Home';
   elementContainer.appendChild(pageTitle);
+
+  DOMStuff.createNavListItem(
+    'add_circle',
+    'New task',
+    elementContainer,
+    'new-task-btn'
+  );
 
   const taskContainer = document.createElement('div');
   taskContainer.id = 'task-container';

@@ -15,7 +15,7 @@
       var n = e.g.document;
       if (!t && n && (n.currentScript && (t = n.currentScript.src), !t)) {
         var c = n.getElementsByTagName('script');
-        if (c.length) for (var o = c.length - 1; o > -1 && !t; ) t = c[o--].src;
+        if (c.length) for (var a = c.length - 1; a > -1 && !t; ) t = c[a--].src;
       }
       if (!t)
         throw new Error(
@@ -47,20 +47,20 @@
     })(),
     c = (() => {
       const e = (e, t, n, c) => {
-          const o = document.createElement('li');
-          o.classList.add('nav-item'),
+          const a = document.createElement('li');
+          a.classList.add('nav-item'),
             ((e, t, n, c) => {
-              const o = document.createElement('button');
-              o.classList.add('nav-btn', 'font-20px', 'flex', 'align-center'),
-                c && (o.id = c);
-              const a = document.createElement('span');
-              (a.textContent = e),
-                a.classList.add('material-icons'),
-                o.appendChild(a),
-                (o.innerHTML += t),
-                n.appendChild(o);
-            })(e, t, o, c),
-            n.appendChild(o);
+              const a = document.createElement('button');
+              a.classList.add('nav-btn', 'font-20px', 'flex', 'align-center'),
+                c && (a.id = c);
+              const o = document.createElement('span');
+              (o.textContent = e),
+                o.classList.add('material-icons'),
+                a.appendChild(o),
+                (a.innerHTML += t),
+                n.appendChild(a);
+            })(e, t, a, c),
+            n.appendChild(a);
         },
         t = () => {
           const t = document.querySelector('#nav-list-projects'),
@@ -81,39 +81,39 @@
           const e = document.querySelector('nav'),
             c = document.querySelector('#new-project-btn');
           c.style.display = 'none';
-          const o = document.createElement('div');
-          o.id = 'new-project-popup';
-          const a = document.createElement('input');
-          a.classList.add('font-20px'),
-            (a.type = 'text'),
-            (a.id = 'project-name'),
-            (a.name = 'projectName'),
-            (a.required = !0),
-            o.appendChild(a);
+          const a = document.createElement('div');
+          a.id = 'new-project-popup';
+          const o = document.createElement('input');
+          o.classList.add('font-20px'),
+            (o.type = 'text'),
+            (o.id = 'project-name'),
+            (o.name = 'projectName'),
+            (o.required = !0),
+            a.appendChild(o);
           const d = document.createElement('div');
           (d.id = 'new-project-popup-buttons'),
             d.classList.add('flex', 'font-20px'),
-            o.appendChild(d);
-          const r = document.createElement('button');
-          (r.id = 'accept-new-project-btn'),
-            (r.textContent = 'Ok'),
-            r.classList.add('flex', 'font-20px', 'justify-center'),
-            d.appendChild(r);
+            a.appendChild(d);
           const i = document.createElement('button');
-          (i.id = 'cancel-new-project-btn'),
-            (i.textContent = 'Cancel'),
+          (i.id = 'accept-new-project-btn'),
+            (i.textContent = 'Ok'),
             i.classList.add('flex', 'font-20px', 'justify-center'),
-            d.appendChild(i),
-            r.addEventListener('click', () => {
-              o.remove(),
-                n.storeNewProject(a.value),
+            d.appendChild(i);
+          const r = document.createElement('button');
+          (r.id = 'cancel-new-project-btn'),
+            (r.textContent = 'Cancel'),
+            r.classList.add('flex', 'font-20px', 'justify-center'),
+            d.appendChild(r),
+            i.addEventListener('click', () => {
+              a.remove(),
+                n.storeNewProject(o.value),
                 t(),
                 (c.style.display = 'flex');
             }),
-            i.addEventListener('click', () => {
-              o.remove(), (c.style.display = 'flex');
+            r.addEventListener('click', () => {
+              a.remove(), (c.style.display = 'flex');
             }),
-            e.appendChild(o);
+            e.appendChild(a);
         },
         displayPageTitle: (e) => {
           const t = document.querySelector('#page-title');
@@ -128,9 +128,37 @@
               t.textContent = 'Week';
           }
         },
+        addNewTaskPopup: () => {
+          const e = document.querySelector('#element-container');
+          document.querySelector('#new-task-btn').style.display = 'none';
+          const t = document.createElement('div');
+          t.id = 'new-task-popup';
+          const n = document.createElement('input');
+          n.classList.add('font-20px'),
+            (n.type = 'text'),
+            (n.id = 'task-name'),
+            (n.name = 'taskName'),
+            (n.required = !0),
+            t.appendChild(n);
+          const c = document.createElement('div');
+          (c.id = 'new-task-popup-buttons'),
+            c.classList.add('flex', 'font-20px'),
+            t.appendChild(c);
+          const a = document.createElement('button');
+          (a.id = 'accept-new-task-btn'),
+            (a.textContent = 'Ok'),
+            a.classList.add('flex', 'font-20px', 'justify-center'),
+            c.appendChild(a);
+          const o = document.createElement('button');
+          (o.id = 'cancel-new-task-btn'),
+            (o.textContent = 'Cancel'),
+            o.classList.add('flex', 'font-20px', 'justify-center'),
+            c.appendChild(o),
+            e.appendChild(t);
+        },
       };
     })(),
-    o = () => {
+    a = () => {
       document
         .querySelector('#home-tab')
         .addEventListener('click', c.displayPageTitle),
@@ -142,7 +170,10 @@
           .addEventListener('click', c.displayPageTitle),
         document
           .querySelector('#new-project-btn')
-          .addEventListener('click', c.addNewProjectPopup);
+          .addEventListener('click', c.addNewProjectPopup),
+        document
+          .querySelector('#new-task-btn')
+          .addEventListener('click', c.addNewTaskPopup);
     };
   (() => {
     const e = document.createElement('header'),
@@ -153,14 +184,14 @@
       (c.alt = 'The Odin Project logo'),
       c.setAttribute('id', 'odin-logo'),
       n.appendChild(c);
-    const o = document.createElement('p');
-    o.setAttribute('id', 'logo-text'),
-      (o.textContent = 'The Odin Project'),
-      n.appendChild(o);
-    const a = document.createElement('h1');
-    (a.textContent = 'Todo List'),
-      a.classList.add('font-48px'),
-      e.appendChild(a),
+    const a = document.createElement('p');
+    a.setAttribute('id', 'logo-text'),
+      (a.textContent = 'The Odin Project'),
+      n.appendChild(a);
+    const o = document.createElement('h1');
+    (o.textContent = 'Todo List'),
+      o.classList.add('font-48px'),
+      e.appendChild(o),
       document.body.appendChild(e);
   })(),
     (() => {
@@ -170,16 +201,16 @@
           const t = document.createElement('nav'),
             n = document.createElement('h2');
           (n.textContent = 'Tasks'), (n.id = 'tasks-title'), t.appendChild(n);
-          const o = document.createElement('ul');
-          o.setAttribute('id', 'nav-list-tasks'),
-            t.appendChild(o),
-            c.createNavListItem('home', 'Home', o, 'home-tab'),
-            c.createNavListItem('today', 'Today', o, 'today-tab'),
-            c.createNavListItem('date_range', 'Week', o, 'week-tab');
-          const a = document.createElement('h2');
-          (a.textContent = 'Projects'),
-            (a.id = 'projects-title'),
-            t.appendChild(a);
+          const a = document.createElement('ul');
+          a.setAttribute('id', 'nav-list-tasks'),
+            t.appendChild(a),
+            c.createNavListItem('home', 'Home', a, 'home-tab'),
+            c.createNavListItem('today', 'Today', a, 'today-tab'),
+            c.createNavListItem('date_range', 'Week', a, 'week-tab');
+          const o = document.createElement('h2');
+          (o.textContent = 'Projects'),
+            (o.id = 'projects-title'),
+            t.appendChild(o);
           const d = document.createElement('ul');
           d.setAttribute('id', 'nav-list-projects'),
             t.appendChild(d),
@@ -195,8 +226,11 @@
           const t = document.createElement('section'),
             n = document.createElement('div');
           (n.id = 'element-container'), t.appendChild(n);
-          const c = document.createElement('h2');
-          (c.id = 'page-title'), (c.textContent = 'Home'), n.appendChild(c);
+          const a = document.createElement('h2');
+          (a.id = 'page-title'),
+            (a.textContent = 'Home'),
+            n.appendChild(a),
+            c.createNavListItem('add_circle', 'New task', n, 'new-task-btn');
           const o = document.createElement('div');
           (o.id = 'task-container'), n.appendChild(o), e.appendChild(t);
         })(e);
@@ -210,5 +244,5 @@
         document.body.appendChild(e);
     })(),
     window.addEventListener('load', c.updateNavProjectList()),
-    o();
+    a();
 })();

@@ -13,6 +13,9 @@ const Buttons = (() => {
 
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.addEventListener('click', DOMStuff.addNewProjectPopup);
+
+    const newTaskBtn = document.querySelector('#new-task-btn');
+    newTaskBtn.addEventListener('click', DOMStuff.addNewTaskPopup);
   };
 
   return { initButtons };

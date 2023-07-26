@@ -41,7 +41,7 @@ footer {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
   position: absolute;
   top: 117px;
   bottom: 40px;
@@ -82,7 +82,8 @@ ul {
   margin: 8px;
 }
 
-#project-name {
+#project-name,
+#task-name {
   border: black 2px solid;
   border-radius: 4px;
   width: 100%;
@@ -94,7 +95,9 @@ ul {
 }
 
 #accept-new-project-btn,
-#cancel-new-project-btn {
+#cancel-new-project-btn,
+#accept-new-task-btn,
+#cancel-new-task-btn {
   color: white;
   padding: 8px;
   margin-top: 8px;
@@ -105,11 +108,13 @@ ul {
   cursor: pointer;
 }
 
-#accept-new-project-btn {
+#accept-new-project-btn,
+#accept-new-task-btn {
   background-color: #8ab060;
 }
 
-#cancel-new-project-btn {
+#cancel-new-project-btn,
+#cancel-new-task-btn {
   background-color: #b45252;
 }
 
@@ -134,7 +139,13 @@ section {
 
 #page-title {
   font-size: 38px;
-  margin: 16px 32px;
+  margin: 16px;
+}
+
+#new-task-btn {
+  width: max-content;
+  padding: 8px;
+  margin: 8px;
 }
 
 article {

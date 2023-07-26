@@ -112,12 +112,50 @@ const DOMStuff = (() => {
     }
   };
 
+  const addNewTaskPopup = () => {
+    const elementContainer = document.querySelector('#element-container');
+
+    const newProjectBtn = document.querySelector('#new-task-btn');
+    newProjectBtn.style.display = 'none';
+
+    const newTaskPopup = document.createElement('div');
+    newTaskPopup.id = 'new-task-popup';
+
+    const newTaskName = document.createElement('input');
+    newTaskName.classList.add('font-20px');
+    newTaskName.type = 'text';
+    newTaskName.id = 'task-name';
+    newTaskName.name = 'taskName';
+    newTaskName.required = true;
+    newTaskPopup.appendChild(newTaskName);
+
+    const newTaskPopupButtons = document.createElement('div');
+    newTaskPopupButtons.id = 'new-task-popup-buttons';
+    newTaskPopupButtons.classList.add('flex', 'font-20px');
+    newTaskPopup.appendChild(newTaskPopupButtons);
+
+    const acceptNewTaskBtn = document.createElement('button');
+    acceptNewTaskBtn.id = 'accept-new-task-btn';
+    acceptNewTaskBtn.textContent = 'Ok';
+    acceptNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newTaskPopupButtons.appendChild(acceptNewTaskBtn);
+
+    const cancelNewTaskBtn = document.createElement('button');
+    cancelNewTaskBtn.id = 'cancel-new-task-btn';
+    cancelNewTaskBtn.textContent = 'Cancel';
+    cancelNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newTaskPopupButtons.appendChild(cancelNewTaskBtn);
+
+    elementContainer.appendChild(newTaskPopup);
+  };
+
   return {
     createNavListItem,
     createTaskElement,
     updateNavProjectList,
     addNewProjectPopup,
     displayPageTitle,
+    addNewTaskPopup,
   };
 })();
 
