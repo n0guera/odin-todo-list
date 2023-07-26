@@ -148,6 +148,11 @@ section {
   margin: 8px;
 }
 
+#new-task-popup {
+  width: 200px;
+  height: auto;
+}
+
 article {
   height: 200px;
   width: 200px;
