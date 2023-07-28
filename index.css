@@ -145,12 +145,15 @@ section {
   margin: 16px;
 }
 
+#new-task-btn,
+#new-note-btn,
 #new-task-btn {
   width: max-content;
   padding: 8px;
   margin: 8px;
 }
 
+#new-note-popup,
 #new-task-popup {
   width: 200px;
   height: auto;
