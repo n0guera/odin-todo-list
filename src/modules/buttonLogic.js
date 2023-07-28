@@ -1,21 +1,29 @@
 import DOMStuff from './DOMStuff';
+import renderHomeTab from './homeTab';
+import renderTodayTab from './todayTab';
+import renderWeekTab from './weekTab';
 
 const Buttons = (() => {
   const initButtons = () => {
     const homeTab = document.querySelector('#home-tab');
-    homeTab.addEventListener('click', DOMStuff.displayPageTitle);
+    homeTab.addEventListener('click', renderHomeTab);
 
     const todayTab = document.querySelector('#today-tab');
-    todayTab.addEventListener('click', DOMStuff.displayPageTitle);
+    todayTab.addEventListener('click', renderTodayTab);
 
     const weekTab = document.querySelector('#week-tab');
-    weekTab.addEventListener('click', DOMStuff.displayPageTitle);
+    weekTab.addEventListener('click', renderWeekTab);
+
+    const projectElements = document.querySelectorAll('.project');
+    projectElements.forEach((project) => {
+      project.addEventListener('click', DOMStuff.viewProject);
+    });
 
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.addEventListener('click', DOMStuff.addNewProjectPopup);
 
-    const newTaskBtn = document.querySelector('#new-task-btn');
-    newTaskBtn.addEventListener('click', DOMStuff.addNewTaskPopup);
+    const newNoteBtn = document.querySelector('#new-note-btn');
+    newNoteBtn.addEventListener('click', DOMStuff.addNewNotePopup);
   };
 
   return { initButtons };

@@ -1,9 +1,10 @@
 import todoStorage from './todoStorage';
 
 const DOMStuff = (() => {
-  const createNavButton = (icon, text, parentNode, id) => {
+  const createButton = (icon, text, parentNode, id, cssClass) => {
     const buttonElement = document.createElement('button');
-    buttonElement.classList.add('nav-btn', 'font-20px', 'flex', 'align-center');
+    buttonElement.classList.add('font-20px', 'flex', 'align-center');
+    if (cssClass) buttonElement.classList.add(cssClass);
     if (id) buttonElement.id = id;
 
     const spanElement = document.createElement('span');
@@ -16,11 +17,27 @@ const DOMStuff = (() => {
     parentNode.appendChild(buttonElement);
   };
 
-  const createNavListItem = (icon, text, parentNode, id) => {
+  const createNavButton = (icon, text, parentNode, id, cssClass) => {
+    const buttonElement = document.createElement('button');
+    buttonElement.classList.add('nav-btn', 'font-20px', 'flex', 'align-center');
+    if (cssClass) buttonElement.classList.add(cssClass);
+    if (id) buttonElement.id = id;
+
+    const spanElement = document.createElement('span');
+    spanElement.textContent = icon;
+    spanElement.classList.add('material-icons');
+    buttonElement.appendChild(spanElement);
+
+    buttonElement.innerHTML += text;
+
+    parentNode.appendChild(buttonElement);
+  };
+
+  const createNavListItem = (icon, text, parentNode, id, cssClass) => {
     const listItem = document.createElement('li');
     listItem.classList.add('nav-item');
 
-    createNavButton(icon, text, listItem, id);
+    createNavButton(icon, text, listItem, id, cssClass);
 
     parentNode.appendChild(listItem);
   };
@@ -30,6 +47,10 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
+  const viewProject = () => {
+    // const pageTitle = document.querySelector('#page-title');
+  };
+
   const updateNavProjectList = () => {
     const navListProjects = document.querySelector('#nav-list-projects');
     const projects = todoStorage.getProjectList();
@@ -37,7 +58,18 @@ const DOMStuff = (() => {
     navListProjects.innerHTML = '';
 
     projects.forEach((project) => {
-      createNavListItem('folder', `${project.projectName}`, navListProjects);
+      createNavListItem(
+        'folder',
+        `${project.projectName}`,
+        navListProjects,
+        '',
+        'project'
+      );
+    });
+
+    const projectElements = document.querySelectorAll('.project');
+    projectElements.forEach((project) => {
+      project.addEventListener('click', viewProject);
     });
   };
 
@@ -112,6 +144,49 @@ const DOMStuff = (() => {
     }
   };
 
+  const addNewNotePopup = () => {
+    const elementContainer = document.querySelector('#element-container');
+
+    const newNoteBtn = document.querySelector('#new-note-btn');
+    newNoteBtn.style.display = 'none';
+
+    const newNotePopup = document.createElement('div');
+    newNotePopup.id = 'new-note-popup';
+
+    const newNoteName = document.createElement('input');
+    newNoteName.classList.add('font-20px');
+    newNoteName.type = 'text';
+    newNoteName.id = 'note-name';
+    newNoteName.name = 'noteName';
+    newNoteName.required = true;
+    newNotePopup.appendChild(newNoteName);
+
+    const newNotePopupButtons = document.createElement('div');
+    newNotePopupButtons.id = 'new-note-popup-buttons';
+    newNotePopupButtons.classList.add('flex', 'font-20px');
+    newNotePopup.appendChild(newNotePopupButtons);
+
+    const acceptNewNoteBtn = document.createElement('button');
+    acceptNewNoteBtn.id = 'accept-new-note-btn';
+    acceptNewNoteBtn.textContent = 'Ok';
+    acceptNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newNotePopupButtons.appendChild(acceptNewNoteBtn);
+
+    const cancelNewNoteBtn = document.createElement('button');
+    cancelNewNoteBtn.id = 'cancel-new-note-btn';
+    cancelNewNoteBtn.textContent = 'Cancel';
+    cancelNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newNotePopupButtons.appendChild(cancelNewNoteBtn);
+
+    const cancelNewNote = () => {
+      newNotePopup.remove();
+      newNoteBtn.style.display = 'flex';
+    };
+    cancelNewNoteBtn.addEventListener('click', cancelNewNote);
+
+    elementContainer.appendChild(newNotePopup);
+  };
+
   const addNewTaskPopup = () => {
     const elementContainer = document.querySelector('#element-container');
 
@@ -156,12 +231,15 @@ const DOMStuff = (() => {
   };
 
   return {
+    createButton,
     createNavListItem,
     createTaskElement,
     updateNavProjectList,
     addNewProjectPopup,
-    displayPageTitle,
+    addNewNotePopup,
     addNewTaskPopup,
+    viewProject,
+    displayPageTitle,
   };
 })();
 
