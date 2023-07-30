@@ -47,9 +47,7 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
-  const viewProject = () => {
-    // const pageTitle = document.querySelector('#page-title');
-  };
+  const viewProject = () => {};
 
   const updateNavProjectList = () => {
     const navListProjects = document.querySelector('#nav-list-projects');
@@ -71,6 +69,15 @@ const DOMStuff = (() => {
     projectElements.forEach((project) => {
       project.addEventListener('click', viewProject);
     });
+  };
+
+  const updateNoteList = () => {
+    const noteListContainer = document.querySelector('#task-container');
+    const notes = todoStorage.getNotesList();
+
+    noteListContainer.innerHTML = '';
+
+    notes.forEach();
   };
 
   const addNewProjectPopup = () => {
@@ -123,27 +130,6 @@ const DOMStuff = (() => {
     navElement.appendChild(newProjectPopup);
   };
 
-  const displayPageTitle = (element) => {
-    const pageTitleElement = document.querySelector('#page-title');
-
-    switch (element.target.id) {
-      case 'home-tab':
-        pageTitleElement.textContent = 'Home';
-        break;
-
-      case 'today-tab':
-        pageTitleElement.textContent = 'Today';
-        break;
-
-      case 'week-tab':
-        pageTitleElement.textContent = 'Week';
-        break;
-
-      default:
-        break;
-    }
-  };
-
   const addNewNotePopup = () => {
     const elementContainer = document.querySelector('#element-container');
 
@@ -177,6 +163,14 @@ const DOMStuff = (() => {
     cancelNewNoteBtn.textContent = 'Cancel';
     cancelNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
     newNotePopupButtons.appendChild(cancelNewNoteBtn);
+
+    const addNote = () => {
+      newNotePopup.remove();
+      todoStorage.storeNewNote(newNoteName.value);
+      updateNoteList();
+      newNoteBtn.style.display = 'flex';
+    };
+    acceptNewNoteBtn.addEventListener('click', addNote);
 
     const cancelNewNote = () => {
       newNotePopup.remove();
@@ -228,6 +222,27 @@ const DOMStuff = (() => {
     cancelNewTaskBtn.addEventListener('click', cancelNewTask);
 
     elementContainer.appendChild(newTaskPopup);
+  };
+
+  const displayPageTitle = (element) => {
+    const pageTitleElement = document.querySelector('#page-title');
+
+    switch (element.target.id) {
+      case 'home-tab':
+        pageTitleElement.textContent = 'Home';
+        break;
+
+      case 'today-tab':
+        pageTitleElement.textContent = 'Today';
+        break;
+
+      case 'week-tab':
+        pageTitleElement.textContent = 'Week';
+        break;
+
+      default:
+        break;
+    }
   };
 
   return {
