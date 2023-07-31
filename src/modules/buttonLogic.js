@@ -16,7 +16,7 @@ const Buttons = (() => {
 
     const projectElements = document.querySelectorAll('.project');
     projectElements.forEach((project) => {
-      project.addEventListener('click', DOMStuff.displayPageTitle);
+      project.addEventListener('click', DOMStuff.viewProject);
     });
 
     const newProjectBtn = document.querySelector('#new-project-btn');

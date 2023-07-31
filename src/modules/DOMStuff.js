@@ -82,7 +82,21 @@ const DOMStuff = (() => {
 
     noteListContainer.innerHTML = '';
 
-    notes.forEach();
+    notes.forEach((note) => {
+      const noteElement = document.createElement('div');
+      noteElement.classList.add('note');
+      noteListContainer.appendChild(noteElement);
+
+      const noteTitle = document.createElement('h3');
+      noteTitle.classList.add('note-title');
+      noteElement.textContent = note.noteName;
+      noteElement.appendChild(noteTitle);
+
+      const noteDesc = document.createElement('p');
+      noteDesc.classList.add('note-desc');
+      noteDesc.textContent = note.noteDesc;
+      noteElement.appendChild(noteDesc);
+    });
   };
 
   const addNewProjectPopup = () => {
@@ -152,6 +166,14 @@ const DOMStuff = (() => {
     newNoteName.required = true;
     newNotePopup.appendChild(newNoteName);
 
+    const newNoteDesc = document.createElement('input');
+    newNoteDesc.classList.add('font-20px');
+    newNoteDesc.type = 'text';
+    newNoteDesc.id = 'note-desc';
+    newNoteDesc.name = 'noteDesc';
+    newNoteDesc.required = true;
+    newNotePopup.appendChild(newNoteDesc);
+
     const newNotePopupButtons = document.createElement('div');
     newNotePopupButtons.id = 'new-note-popup-buttons';
     newNotePopupButtons.classList.add('flex', 'font-20px');
@@ -171,7 +193,7 @@ const DOMStuff = (() => {
 
     const addNote = () => {
       newNotePopup.remove();
-      todoStorage.storeNewNote(newNoteName.value);
+      todoStorage.storeNewNote(newNoteName.value, newNoteDesc.value);
       updateNoteList();
       newNoteBtn.style.display = 'flex';
     };
@@ -234,6 +256,7 @@ const DOMStuff = (() => {
     createNavListItem,
     createTaskElement,
     updateNavProjectList,
+    updateNoteList,
     addNewProjectPopup,
     addNewNotePopup,
     addNewTaskPopup,

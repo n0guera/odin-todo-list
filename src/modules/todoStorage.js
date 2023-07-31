@@ -3,8 +3,8 @@ const todoStorage = (() => {
   let notes = [];
 
   const projectFactory = (projectName, tasks) => ({ projectName, tasks });
-  const taskFactory = (taskName, taskDesc) => ({ taskName, taskDesc });
   const noteFactory = (noteName, noteDesc) => ({ noteName, noteDesc });
+  const taskFactory = (taskName, taskDesc) => ({ taskName, taskDesc });
 
   const getProjectList = () =>
     JSON.parse(localStorage.getItem('projects')) || [];
@@ -16,7 +16,7 @@ const todoStorage = (() => {
   };
 
   const updateNoteList = () => {
-    notes = getNotesList;
+    notes = getNotesList();
   };
 
   const storeNewProject = (projectName) => {

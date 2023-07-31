@@ -1,3 +1,4 @@
+import DOMStuff from './DOMStuff';
 import renderHomeTab from './homeTab';
 import todoStorage from './todoStorage';
 
@@ -13,11 +14,11 @@ const createTaskContainer = (parentNode) => {
 
   const taskContainer = document.createElement('div');
   taskContainer.id = 'task-container';
-
-  if (todoStorage.getNotesList.length === 0)
-    taskContainer.style.display = 'none';
-
   elementContainer.appendChild(taskContainer);
+
+  if (todoStorage.getNotesList().length === 0)
+    taskContainer.style.display = 'none';
+  DOMStuff.updateNoteList();
 };
 
 export default createTaskContainer;
