@@ -47,7 +47,12 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
-  const viewProject = () => {};
+  const viewProject = (element) => {
+    const pageTitleElement = document.querySelector('#page-title');
+    const projectName = element.target.textContent;
+    const filterProjectName = () => projectName.split('folder')[1];
+    pageTitleElement.textContent = filterProjectName(element);
+  };
 
   const updateNavProjectList = () => {
     const navListProjects = document.querySelector('#nav-list-projects');
@@ -224,27 +229,6 @@ const DOMStuff = (() => {
     elementContainer.appendChild(newTaskPopup);
   };
 
-  const displayPageTitle = (element) => {
-    const pageTitleElement = document.querySelector('#page-title');
-
-    switch (element.target.id) {
-      case 'home-tab':
-        pageTitleElement.textContent = 'Home';
-        break;
-
-      case 'today-tab':
-        pageTitleElement.textContent = 'Today';
-        break;
-
-      case 'week-tab':
-        pageTitleElement.textContent = 'Week';
-        break;
-
-      default:
-        break;
-    }
-  };
-
   return {
     createButton,
     createNavListItem,
@@ -254,7 +238,6 @@ const DOMStuff = (() => {
     addNewNotePopup,
     addNewTaskPopup,
     viewProject,
-    displayPageTitle,
   };
 })();
 
