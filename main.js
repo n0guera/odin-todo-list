@@ -36,7 +36,7 @@
         c = () => {
           e = n();
         },
-        a = () => {
+        d = () => {
           t = o;
         };
       return {
@@ -48,7 +48,7 @@
           e.push(n), localStorage.setItem('projects', JSON.stringify(e));
         },
         storeNewNote: (e, n) => {
-          a();
+          d();
           const o = ((e, t) => ({ noteName: e, noteDesc: t }))(e, n);
           t.push(o), localStorage.setItem('notes', JSON.stringify(t));
         },
@@ -59,28 +59,32 @@
         getProjectList: n,
         getNotesList: o,
         updateProjectList: c,
-        updateNoteList: a,
+        updateNoteList: d,
       };
     })(),
     o = (() => {
       const e = (e, t, n, o, c) => {
-          const a = document.createElement('li');
-          a.classList.add('nav-item'),
+          const d = document.createElement('li');
+          d.classList.add('nav-item'),
             ((e, t, n, o, c) => {
-              const a = document.createElement('button');
-              a.classList.add('nav-btn', 'font-20px', 'flex', 'align-center'),
-                c && a.classList.add(c),
-                o && (a.id = o);
-              const d = document.createElement('span');
-              (d.textContent = e),
-                d.classList.add('material-icons'),
-                a.appendChild(d),
-                (a.innerHTML += t),
-                n.appendChild(a);
-            })(e, t, a, o, c),
-            n.appendChild(a);
+              const d = document.createElement('button');
+              d.classList.add('nav-btn', 'font-20px', 'flex', 'align-center'),
+                c && d.classList.add(c),
+                o && (d.id = o);
+              const a = document.createElement('span');
+              (a.textContent = e),
+                a.classList.add('material-icons'),
+                d.appendChild(a),
+                (d.innerHTML += t),
+                n.appendChild(d);
+            })(e, t, d, o, c),
+            n.appendChild(d);
         },
-        t = () => {},
+        t = (e) => {
+          const t = document.querySelector('#page-title'),
+            n = e.target.textContent;
+          t.textContent = n.split('folder')[1];
+        },
         o = () => {
           const o = document.querySelector('#nav-list-projects'),
             c = n.getProjectList();
@@ -94,16 +98,16 @@
         };
       return {
         createButton: (e, t, n, o, c) => {
-          const a = document.createElement('button');
-          a.classList.add('font-20px', 'flex', 'align-center'),
-            c && a.classList.add(c),
-            o && (a.id = o);
-          const d = document.createElement('span');
-          (d.textContent = e),
-            d.classList.add('material-icons'),
-            a.appendChild(d),
-            (a.innerHTML += t),
-            n.appendChild(a);
+          const d = document.createElement('button');
+          d.classList.add('font-20px', 'flex', 'align-center'),
+            c && d.classList.add(c),
+            o && (d.id = o);
+          const a = document.createElement('span');
+          (a.textContent = e),
+            a.classList.add('material-icons'),
+            d.appendChild(a),
+            (d.innerHTML += t),
+            n.appendChild(d);
         },
         createNavListItem: e,
         createTaskElement: (e) => {
@@ -117,30 +121,30 @@
           t.style.display = 'none';
           const c = document.createElement('div');
           c.id = 'new-project-popup';
-          const a = document.createElement('input');
-          a.classList.add('font-20px'),
-            (a.type = 'text'),
-            (a.id = 'project-name'),
-            (a.name = 'projectName'),
-            (a.required = !0),
-            c.appendChild(a);
-          const d = document.createElement('div');
-          (d.id = 'new-project-popup-buttons'),
-            d.classList.add('flex', 'font-20px'),
+          const d = document.createElement('input');
+          d.classList.add('font-20px'),
+            (d.type = 'text'),
+            (d.id = 'project-name'),
+            (d.name = 'projectName'),
+            (d.required = !0),
             c.appendChild(d);
+          const a = document.createElement('div');
+          (a.id = 'new-project-popup-buttons'),
+            a.classList.add('flex', 'font-20px'),
+            c.appendChild(a);
           const s = document.createElement('button');
           (s.id = 'accept-new-project-btn'),
             (s.textContent = 'Ok'),
             s.classList.add('flex', 'font-20px', 'justify-center'),
-            d.appendChild(s);
+            a.appendChild(s);
           const r = document.createElement('button');
           (r.id = 'cancel-new-project-btn'),
             (r.textContent = 'Cancel'),
             r.classList.add('flex', 'font-20px', 'justify-center'),
-            d.appendChild(r),
+            a.appendChild(r),
             s.addEventListener('click', () => {
               c.remove(),
-                n.storeNewProject(a.value),
+                n.storeNewProject(d.value),
                 o(),
                 (t.style.display = 'flex');
             }),
@@ -162,21 +166,21 @@
             (c.name = 'noteName'),
             (c.required = !0),
             o.appendChild(c);
-          const a = document.createElement('div');
-          (a.id = 'new-note-popup-buttons'),
-            a.classList.add('flex', 'font-20px'),
-            o.appendChild(a);
-          const d = document.createElement('button');
-          (d.id = 'accept-new-note-btn'),
-            (d.textContent = 'Ok'),
-            d.classList.add('flex', 'font-20px', 'justify-center'),
-            a.appendChild(d);
+          const d = document.createElement('div');
+          (d.id = 'new-note-popup-buttons'),
+            d.classList.add('flex', 'font-20px'),
+            o.appendChild(d);
+          const a = document.createElement('button');
+          (a.id = 'accept-new-note-btn'),
+            (a.textContent = 'Ok'),
+            a.classList.add('flex', 'font-20px', 'justify-center'),
+            d.appendChild(a);
           const s = document.createElement('button');
           (s.id = 'cancel-new-note-btn'),
             (s.textContent = 'Cancel'),
             s.classList.add('flex', 'font-20px', 'justify-center'),
-            a.appendChild(s),
-            d.addEventListener('click', () => {
+            d.appendChild(s),
+            a.addEventListener('click', () => {
               o.remove(),
                 n.storeNewNote(c.value),
                 (() => {
@@ -208,35 +212,22 @@
           (c.id = 'new-task-popup-buttons'),
             c.classList.add('flex', 'font-20px'),
             n.appendChild(c);
-          const a = document.createElement('button');
-          (a.id = 'accept-new-task-btn'),
-            (a.textContent = 'Ok'),
-            a.classList.add('flex', 'font-20px', 'justify-center'),
-            c.appendChild(a);
           const d = document.createElement('button');
-          (d.id = 'cancel-new-task-btn'),
-            (d.textContent = 'Cancel'),
+          (d.id = 'accept-new-task-btn'),
+            (d.textContent = 'Ok'),
             d.classList.add('flex', 'font-20px', 'justify-center'),
-            c.appendChild(d),
-            d.addEventListener('click', () => {
+            c.appendChild(d);
+          const a = document.createElement('button');
+          (a.id = 'cancel-new-task-btn'),
+            (a.textContent = 'Cancel'),
+            a.classList.add('flex', 'font-20px', 'justify-center'),
+            c.appendChild(a),
+            a.addEventListener('click', () => {
               n.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(n);
         },
         viewProject: t,
-        displayPageTitle: (e) => {
-          const t = document.querySelector('#page-title');
-          switch (e.target.id) {
-            case 'home-tab':
-              t.textContent = 'Home';
-              break;
-            case 'today-tab':
-              t.textContent = 'Today';
-              break;
-            case 'week-tab':
-              t.textContent = 'Week';
-          }
-        },
       };
     })(),
     c = () => {
@@ -248,14 +239,14 @@
         e.appendChild(t),
         o.createNavListItem('add_circle', 'New note', e, 'new-note-btn');
     },
-    a = () => {},
     d = () => {},
+    a = () => {},
     s = () => {
       document.querySelector('#home-tab').addEventListener('click', c),
-        document.querySelector('#today-tab').addEventListener('click', a),
-        document.querySelector('#week-tab').addEventListener('click', d),
+        document.querySelector('#today-tab').addEventListener('click', d),
+        document.querySelector('#week-tab').addEventListener('click', a),
         document.querySelectorAll('.project').forEach((e) => {
-          e.addEventListener('click', o.viewProject);
+          e.addEventListener('click', o.displayPageTitle);
         }),
         document
           .querySelector('#new-project-btn')
@@ -277,10 +268,10 @@
     c.setAttribute('id', 'logo-text'),
       (c.textContent = 'The Odin Project'),
       n.appendChild(c);
-    const a = document.createElement('h1');
-    (a.textContent = 'Todo List'),
-      a.classList.add('font-48px'),
-      e.appendChild(a),
+    const d = document.createElement('h1');
+    (d.textContent = 'Todo List'),
+      d.classList.add('font-48px'),
+      e.appendChild(d),
       document.body.appendChild(e);
   })(),
     (() => {
@@ -296,13 +287,13 @@
             o.createNavListItem('home', 'Home', c, 'home-tab'),
             o.createNavListItem('today', 'Today', c, 'today-tab'),
             o.createNavListItem('date_range', 'Week', c, 'week-tab');
-          const a = document.createElement('h2');
-          (a.textContent = 'Projects'),
-            (a.id = 'projects-title'),
-            t.appendChild(a);
-          const d = document.createElement('ul');
-          d.setAttribute('id', 'nav-list-projects'),
-            t.appendChild(d),
+          const d = document.createElement('h2');
+          (d.textContent = 'Projects'),
+            (d.id = 'projects-title'),
+            t.appendChild(d);
+          const a = document.createElement('ul');
+          a.setAttribute('id', 'nav-list-projects'),
+            t.appendChild(a),
             o.createNavListItem(
               'add_circle',
               'New project',
@@ -316,10 +307,10 @@
           e.appendChild(t);
           const o = document.createElement('div');
           (o.id = 'element-container'), t.appendChild(o), c();
-          const a = document.createElement('div');
-          (a.id = 'task-container'),
-            0 === n.getNotesList.length && (a.style.display = 'none'),
-            o.appendChild(a);
+          const d = document.createElement('div');
+          (d.id = 'task-container'),
+            0 === n.getNotesList.length && (d.style.display = 'none'),
+            o.appendChild(d);
         })(e);
     })(),
     (() => {
