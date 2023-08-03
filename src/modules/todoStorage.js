@@ -9,14 +9,21 @@ const todoStorage = (() => {
   const getProjectList = () =>
     JSON.parse(localStorage.getItem('projects')) || [];
 
-  const getNotesList = () => JSON.parse(localStorage.getItem('notes')) || [];
+  const getNoteList = () => JSON.parse(localStorage.getItem('notes')) || [];
+
+  const getTodayTasks = () => {};
+
+  const getWeekTasks = () => {};
+
+  const getTaskList = (project) =>
+    getProjectList().find((element) => element.projectName === project).tasks;
 
   const updateProjectList = () => {
     projects = getProjectList();
   };
 
   const updateNoteList = () => {
-    notes = getNotesList();
+    notes = getNoteList();
   };
 
   const storeNewProject = (projectName) => {
@@ -45,7 +52,10 @@ const todoStorage = (() => {
     storeNewNote,
     storeNewTask,
     getProjectList,
-    getNotesList,
+    getNoteList,
+    getTodayTasks,
+    getWeekTasks,
+    getTaskList,
     updateProjectList,
     updateNoteList,
   };

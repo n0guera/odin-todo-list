@@ -16,7 +16,7 @@ const createTaskContainer = (parentNode) => {
   taskContainer.id = 'task-container';
   elementContainer.appendChild(taskContainer);
 
-  if (todoStorage.getNotesList().length === 0)
+  if (todoStorage.getNoteList().length === 0)
     taskContainer.style.display = 'none';
   DOMStuff.updateNoteList();
 };

@@ -57,7 +57,10 @@
           (void 0).tasks.push(n);
         },
         getProjectList: n,
-        getNotesList: o,
+        getNoteList: o,
+        getTodayTasks: () => {},
+        getWeekTasks: () => {},
+        getTaskList: (e) => n().find((t) => t.projectName === e).tasks,
         updateProjectList: c,
         updateNoteList: d,
       };
@@ -81,9 +84,16 @@
             n.appendChild(d);
         },
         t = (e) => {
-          const t = document.querySelector('#page-title'),
-            n = e.target.textContent;
-          t.textContent = n.split('folder')[1];
+          const t = document.querySelector('#element-container');
+          t.innerHTML = '';
+          const o = document.createElement('h2');
+          (o.id = 'page-title'), t.appendChild(o);
+          const c = e.target.textContent.split('folder')[1];
+          o.textContent = c;
+          const d = document.createElement('div');
+          (d.id = 'task-container'),
+            t.appendChild(d),
+            0 === n.getTaskList(c).length && (d.style.display = 'none');
         },
         o = () => {
           const o = document.querySelector('#nav-list-projects'),
@@ -98,7 +108,7 @@
         },
         c = () => {
           const e = document.querySelector('#task-container'),
-            t = n.getNotesList();
+            t = n.getNoteList();
           (e.innerHTML = ''),
             t.forEach((t) => {
               const n = document.createElement('div');
@@ -200,18 +210,18 @@
             (i.textContent = 'Ok'),
             i.classList.add('flex', 'font-20px', 'justify-center'),
             s.appendChild(i);
-          const r = document.createElement('button');
-          (r.id = 'cancel-new-note-btn'),
-            (r.textContent = 'Cancel'),
-            r.classList.add('flex', 'font-20px', 'justify-center'),
-            s.appendChild(r),
+          const l = document.createElement('button');
+          (l.id = 'cancel-new-note-btn'),
+            (l.textContent = 'Cancel'),
+            l.classList.add('flex', 'font-20px', 'justify-center'),
+            s.appendChild(l),
             i.addEventListener('click', () => {
               o.remove(),
                 n.storeNewNote(d.value, a.value),
                 c(),
                 (t.style.display = 'flex');
             }),
-            r.addEventListener('click', () => {
+            l.addEventListener('click', () => {
               o.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(o);
@@ -260,7 +270,16 @@
         e.appendChild(t),
         o.createNavListItem('add_circle', 'New note', e, 'new-note-btn');
     },
-    d = () => {},
+    d = () => {
+      const e = document.querySelector('#element-container');
+      e.innerHTML = '';
+      const t = document.createElement('h2');
+      (t.id = 'page-title'), (t.textContent = 'Today'), e.appendChild(t);
+      const o = document.createElement('div');
+      (o.id = 'task-container'),
+        e.appendChild(o),
+        0 === n.getTodayTasks().length && (o.style.display = 'none');
+    },
     a = () => {},
     s = () => {
       document.querySelector('#home-tab').addEventListener('click', c),
@@ -331,7 +350,7 @@
           const a = document.createElement('div');
           (a.id = 'task-container'),
             d.appendChild(a),
-            0 === n.getNotesList().length && (a.style.display = 'none'),
+            0 === n.getNoteList().length && (a.style.display = 'none'),
             o.updateNoteList();
         })(e);
     })(),

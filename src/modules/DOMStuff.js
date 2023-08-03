@@ -48,10 +48,22 @@ const DOMStuff = (() => {
   };
 
   const viewProject = (element) => {
-    const pageTitleElement = document.querySelector('#page-title');
+    const elementContainer = document.querySelector('#element-container');
+    elementContainer.innerHTML = '';
+
+    const pageTitleElement = document.createElement('h2');
+    pageTitleElement.id = 'page-title';
+    elementContainer.appendChild(pageTitleElement);
+
     const projectName = element.target.textContent;
-    const filterProjectName = () => projectName.split('folder')[1];
-    pageTitleElement.textContent = filterProjectName(element);
+    const filteredProjectName = projectName.split('folder')[1];
+    pageTitleElement.textContent = filteredProjectName;
+
+    const taskContainer = document.createElement('div');
+    taskContainer.id = 'task-container';
+    elementContainer.appendChild(taskContainer);
+    if (todoStorage.getTaskList(filteredProjectName).length === 0)
+      taskContainer.style.display = 'none';
   };
 
   const updateNavProjectList = () => {
@@ -78,7 +90,7 @@ const DOMStuff = (() => {
 
   const updateNoteList = () => {
     const noteListContainer = document.querySelector('#task-container');
-    const notes = todoStorage.getNotesList();
+    const notes = todoStorage.getNoteList();
 
     noteListContainer.innerHTML = '';
 
