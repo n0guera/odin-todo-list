@@ -26,6 +26,11 @@ const todoStorage = (() => {
     notes = getNoteList();
   };
 
+  const validateProjectName = (newProjectName) =>
+    getProjectList().find(
+      (element) => element.projectName === newProjectName
+    ) === undefined;
+
   const storeNewProject = (projectName) => {
     updateProjectList();
     const newProject = projectFactory(projectName, []);
@@ -58,6 +63,7 @@ const todoStorage = (() => {
     getTaskList,
     updateProjectList,
     updateNoteList,
+    validateProjectName,
   };
 })();
 

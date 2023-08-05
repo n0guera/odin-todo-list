@@ -15,6 +15,9 @@ const renderHomeTab = () => {
     elementContainer,
     'new-note-btn'
   );
+
+  const newNoteBtn = document.querySelector('#new-note-btn');
+  newNoteBtn.addEventListener('click', DOMStuff.addNewNotePopup);
 };
 
 export default renderHomeTab;

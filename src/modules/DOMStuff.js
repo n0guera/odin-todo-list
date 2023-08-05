@@ -117,7 +117,8 @@ const DOMStuff = (() => {
     const newProjectBtn = document.querySelector('#new-project-btn');
     newProjectBtn.style.display = 'none';
 
-    const newProjectPopup = document.createElement('div');
+    const newProjectPopup = document.createElement('form');
+    newProjectPopup.method = 'post';
     newProjectPopup.id = 'new-project-popup';
 
     const newProjectName = document.createElement('input');
@@ -126,6 +127,7 @@ const DOMStuff = (() => {
     newProjectName.id = 'project-name';
     newProjectName.name = 'projectName';
     newProjectName.required = true;
+    newProjectName.autocomplete = 'off';
     newProjectPopup.appendChild(newProjectName);
 
     const newProjectPopupButtons = document.createElement('div');
@@ -134,6 +136,7 @@ const DOMStuff = (() => {
     newProjectPopup.appendChild(newProjectPopupButtons);
 
     const acceptNewProjectBtn = document.createElement('button');
+    acceptNewProjectBtn.type = 'submit';
     acceptNewProjectBtn.id = 'accept-new-project-btn';
     acceptNewProjectBtn.textContent = 'Ok';
     acceptNewProjectBtn.classList.add('flex', 'font-20px', 'justify-center');
@@ -145,7 +148,9 @@ const DOMStuff = (() => {
     cancelNewProjectBtn.classList.add('flex', 'font-20px', 'justify-center');
     newProjectPopupButtons.appendChild(cancelNewProjectBtn);
 
-    const addProject = () => {
+    const addProject = (event) => {
+      event.preventDefault();
+      if (!todoStorage.validateProjectName(newProjectName.value)) return;
       newProjectPopup.remove();
       todoStorage.storeNewProject(newProjectName.value);
       updateNavProjectList();
