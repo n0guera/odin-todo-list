@@ -47,6 +47,163 @@ const DOMStuff = (() => {
     parentNode.appendChild(taskElement);
   };
 
+  const updateNoteList = () => {
+    const noteListContainer = document.querySelector('#task-container');
+    const notes = todoStorage.getNoteList();
+
+    noteListContainer.innerHTML = '';
+
+    notes.forEach((note) => {
+      const noteElement = document.createElement('div');
+      noteElement.classList.add('note');
+      noteListContainer.appendChild(noteElement);
+
+      const noteTitle = document.createElement('h3');
+      noteTitle.classList.add('note-title');
+      noteTitle.textContent = note.noteName;
+      noteElement.appendChild(noteTitle);
+
+      const noteDesc = document.createElement('p');
+      noteDesc.classList.add('note-desc');
+      noteDesc.textContent = note.noteDesc;
+      noteElement.appendChild(noteDesc);
+    });
+  };
+
+  const updateTaskContainer = () => {
+    const taskContainer = document.querySelector('#task-container');
+    const currentProject = document.querySelector('#page-title').textContent;
+    const projectTasks = todoStorage.getTaskList(currentProject);
+
+    if (projectTasks.length === 0) taskContainer.style.display = 'none';
+  };
+
+  const addNewNotePopup = () => {
+    const elementContainer = document.querySelector('#element-container');
+
+    const newNoteBtn = document.querySelector('#new-note-btn');
+    newNoteBtn.style.display = 'none';
+
+    const newNotePopup = document.createElement('form');
+    newNotePopup.method = 'post';
+    newNotePopup.id = 'new-note-popup';
+
+    const newNoteName = document.createElement('input');
+    newNoteName.classList.add('font-20px');
+    newNoteName.type = 'text';
+    newNoteName.id = 'note-name';
+    newNoteName.name = 'noteName';
+    newNoteName.required = true;
+    newNoteName.autocomplete = 'off';
+    newNotePopup.appendChild(newNoteName);
+
+    const newNoteDesc = document.createElement('input');
+    newNoteDesc.classList.add('font-20px');
+    newNoteDesc.type = 'text';
+    newNoteDesc.id = 'note-desc';
+    newNoteDesc.name = 'noteDesc';
+    newNoteDesc.required = true;
+    newNotePopup.appendChild(newNoteDesc);
+
+    const newNotePopupButtons = document.createElement('div');
+    newNotePopupButtons.id = 'new-note-popup-buttons';
+    newNotePopupButtons.classList.add('flex', 'font-20px');
+    newNotePopup.appendChild(newNotePopupButtons);
+
+    const acceptNewNoteBtn = document.createElement('button');
+    acceptNewNoteBtn.type = 'submit';
+    acceptNewNoteBtn.id = 'accept-new-note-btn';
+    acceptNewNoteBtn.textContent = 'Ok';
+    acceptNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newNotePopupButtons.appendChild(acceptNewNoteBtn);
+
+    const cancelNewNoteBtn = document.createElement('button');
+    cancelNewNoteBtn.id = 'cancel-new-note-btn';
+    cancelNewNoteBtn.textContent = 'Cancel';
+    cancelNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newNotePopupButtons.appendChild(cancelNewNoteBtn);
+
+    const addNote = (event) => {
+      event.preventDefault();
+      newNotePopup.remove();
+      todoStorage.storeNewNote(newNoteName.value, newNoteDesc.value);
+      updateNoteList();
+      newNoteBtn.style.display = 'flex';
+    };
+    acceptNewNoteBtn.addEventListener('click', addNote);
+
+    const cancelNewNote = () => {
+      newNotePopup.remove();
+      newNoteBtn.style.display = 'flex';
+    };
+    cancelNewNoteBtn.addEventListener('click', cancelNewNote);
+
+    elementContainer.appendChild(newNotePopup);
+  };
+
+  const addNewTaskPopup = () => {
+    const elementContainer = document.querySelector('#element-container');
+
+    const newTaskBtn = document.querySelector('#new-task-btn');
+    newTaskBtn.style.display = 'none';
+
+    const newTaskPopup = document.createElement('form');
+    newTaskPopup.method = 'post';
+    newTaskPopup.id = 'new-task-popup';
+
+    const newTaskName = document.createElement('input');
+    newTaskName.classList.add('font-20px');
+    newTaskName.type = 'text';
+    newTaskName.id = 'task-name';
+    newTaskName.name = 'taskName';
+    newTaskName.required = true;
+    newTaskName.autocomplete = 'off';
+    newTaskPopup.appendChild(newTaskName);
+
+    const newTaskDate = document.createElement('input');
+    newTaskDate.type = 'date';
+    newTaskDate.id = 'new-task-date';
+    newTaskPopup.appendChild(newTaskDate);
+
+    const newTaskPopupButtons = document.createElement('div');
+    newTaskPopupButtons.id = 'new-task-popup-buttons';
+    newTaskPopupButtons.classList.add('flex', 'font-20px');
+    newTaskPopup.appendChild(newTaskPopupButtons);
+
+    const acceptNewTaskBtn = document.createElement('button');
+    acceptNewTaskBtn.type = 'submit';
+    acceptNewTaskBtn.id = 'accept-new-task-btn';
+    acceptNewTaskBtn.textContent = 'Ok';
+    acceptNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newTaskPopupButtons.appendChild(acceptNewTaskBtn);
+
+    const cancelNewTaskBtn = document.createElement('button');
+    cancelNewTaskBtn.id = 'cancel-new-task-btn';
+    cancelNewTaskBtn.textContent = 'Cancel';
+    cancelNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
+    newTaskPopupButtons.appendChild(cancelNewTaskBtn);
+
+    const addTask = (event) => {
+      event.preventDefault();
+      const currentProject = document.querySelector('#page-title').textContent;
+      newTaskPopup.remove();
+      todoStorage.storeNewTask(
+        currentProject,
+        newTaskName.value,
+        newTaskDate.value
+      );
+    };
+    acceptNewTaskBtn.addEventListener('click', addTask);
+
+    const cancelNewTask = () => {
+      newTaskPopup.remove();
+      newTaskBtn.style.display = 'flex';
+    };
+    cancelNewTaskBtn.addEventListener('click', cancelNewTask);
+
+    elementContainer.appendChild(newTaskPopup);
+  };
+
   const viewProject = (element) => {
     const elementContainer = document.querySelector('#element-container');
     elementContainer.innerHTML = '';
@@ -64,6 +221,16 @@ const DOMStuff = (() => {
     elementContainer.appendChild(taskContainer);
     if (todoStorage.getTaskList(filteredProjectName).length === 0)
       taskContainer.style.display = 'none';
+
+    DOMStuff.createNavListItem(
+      'add_circle',
+      'New task',
+      elementContainer,
+      'new-task-btn'
+    );
+
+    const newTaskBtn = document.querySelector('#new-task-btn');
+    newTaskBtn.addEventListener('click', addNewTaskPopup);
   };
 
   const updateNavProjectList = () => {
@@ -85,29 +252,6 @@ const DOMStuff = (() => {
     const projectElements = document.querySelectorAll('.project');
     projectElements.forEach((project) => {
       project.addEventListener('click', viewProject);
-    });
-  };
-
-  const updateNoteList = () => {
-    const noteListContainer = document.querySelector('#task-container');
-    const notes = todoStorage.getNoteList();
-
-    noteListContainer.innerHTML = '';
-
-    notes.forEach((note) => {
-      const noteElement = document.createElement('div');
-      noteElement.classList.add('note');
-      noteListContainer.appendChild(noteElement);
-
-      const noteTitle = document.createElement('h3');
-      noteTitle.classList.add('note-title');
-      noteElement.textContent = note.noteName;
-      noteElement.appendChild(noteTitle);
-
-      const noteDesc = document.createElement('p');
-      noteDesc.classList.add('note-desc');
-      noteDesc.textContent = note.noteDesc;
-      noteElement.appendChild(noteDesc);
     });
   };
 
@@ -166,114 +310,13 @@ const DOMStuff = (() => {
     navElement.appendChild(newProjectPopup);
   };
 
-  const addNewNotePopup = () => {
-    const elementContainer = document.querySelector('#element-container');
-
-    const newNoteBtn = document.querySelector('#new-note-btn');
-    newNoteBtn.style.display = 'none';
-
-    const newNotePopup = document.createElement('div');
-    newNotePopup.id = 'new-note-popup';
-
-    const newNoteName = document.createElement('input');
-    newNoteName.classList.add('font-20px');
-    newNoteName.type = 'text';
-    newNoteName.id = 'note-name';
-    newNoteName.name = 'noteName';
-    newNoteName.required = true;
-    newNotePopup.appendChild(newNoteName);
-
-    const newNoteDesc = document.createElement('input');
-    newNoteDesc.classList.add('font-20px');
-    newNoteDesc.type = 'text';
-    newNoteDesc.id = 'note-desc';
-    newNoteDesc.name = 'noteDesc';
-    newNoteDesc.required = true;
-    newNotePopup.appendChild(newNoteDesc);
-
-    const newNotePopupButtons = document.createElement('div');
-    newNotePopupButtons.id = 'new-note-popup-buttons';
-    newNotePopupButtons.classList.add('flex', 'font-20px');
-    newNotePopup.appendChild(newNotePopupButtons);
-
-    const acceptNewNoteBtn = document.createElement('button');
-    acceptNewNoteBtn.id = 'accept-new-note-btn';
-    acceptNewNoteBtn.textContent = 'Ok';
-    acceptNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
-    newNotePopupButtons.appendChild(acceptNewNoteBtn);
-
-    const cancelNewNoteBtn = document.createElement('button');
-    cancelNewNoteBtn.id = 'cancel-new-note-btn';
-    cancelNewNoteBtn.textContent = 'Cancel';
-    cancelNewNoteBtn.classList.add('flex', 'font-20px', 'justify-center');
-    newNotePopupButtons.appendChild(cancelNewNoteBtn);
-
-    const addNote = () => {
-      newNotePopup.remove();
-      todoStorage.storeNewNote(newNoteName.value, newNoteDesc.value);
-      updateNoteList();
-      newNoteBtn.style.display = 'flex';
-    };
-    acceptNewNoteBtn.addEventListener('click', addNote);
-
-    const cancelNewNote = () => {
-      newNotePopup.remove();
-      newNoteBtn.style.display = 'flex';
-    };
-    cancelNewNoteBtn.addEventListener('click', cancelNewNote);
-
-    elementContainer.appendChild(newNotePopup);
-  };
-
-  const addNewTaskPopup = () => {
-    const elementContainer = document.querySelector('#element-container');
-
-    const newTaskBtn = document.querySelector('#new-task-btn');
-    newTaskBtn.style.display = 'none';
-
-    const newTaskPopup = document.createElement('div');
-    newTaskPopup.id = 'new-task-popup';
-
-    const newTaskName = document.createElement('input');
-    newTaskName.classList.add('font-20px');
-    newTaskName.type = 'text';
-    newTaskName.id = 'task-name';
-    newTaskName.name = 'taskName';
-    newTaskName.required = true;
-    newTaskPopup.appendChild(newTaskName);
-
-    const newTaskPopupButtons = document.createElement('div');
-    newTaskPopupButtons.id = 'new-task-popup-buttons';
-    newTaskPopupButtons.classList.add('flex', 'font-20px');
-    newTaskPopup.appendChild(newTaskPopupButtons);
-
-    const acceptNewTaskBtn = document.createElement('button');
-    acceptNewTaskBtn.id = 'accept-new-task-btn';
-    acceptNewTaskBtn.textContent = 'Ok';
-    acceptNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
-    newTaskPopupButtons.appendChild(acceptNewTaskBtn);
-
-    const cancelNewTaskBtn = document.createElement('button');
-    cancelNewTaskBtn.id = 'cancel-new-task-btn';
-    cancelNewTaskBtn.textContent = 'Cancel';
-    cancelNewTaskBtn.classList.add('flex', 'font-20px', 'justify-center');
-    newTaskPopupButtons.appendChild(cancelNewTaskBtn);
-
-    const cancelNewTask = () => {
-      newTaskPopup.remove();
-      newTaskBtn.style.display = 'flex';
-    };
-    cancelNewTaskBtn.addEventListener('click', cancelNewTask);
-
-    elementContainer.appendChild(newTaskPopup);
-  };
-
   return {
     createButton,
     createNavListItem,
     createTaskElement,
     updateNavProjectList,
     updateNoteList,
+    updateTaskContainer,
     addNewProjectPopup,
     addNewNotePopup,
     addNewTaskPopup,

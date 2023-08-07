@@ -4,7 +4,7 @@ const todoStorage = (() => {
 
   const projectFactory = (projectName, tasks) => ({ projectName, tasks });
   const noteFactory = (noteName, noteDesc) => ({ noteName, noteDesc });
-  const taskFactory = (taskName, taskDesc) => ({ taskName, taskDesc });
+  const taskFactory = (taskName, date) => ({ taskName, date });
 
   const getProjectList = () =>
     JSON.parse(localStorage.getItem('projects')) || [];
@@ -45,9 +45,12 @@ const todoStorage = (() => {
     localStorage.setItem('notes', JSON.stringify(notes));
   };
 
-  const storeNewTask = (taskName, desc) => {
-    const newTask = taskFactory(taskName, desc);
-    this.tasks.push(newTask);
+  const storeNewTask = (currentProject, taskName, date) => {
+    updateProjectList();
+    projects
+      .find((element) => element.projectName === currentProject)
+      .tasks.push(taskFactory(taskName, date));
+    localStorage.setItem('projects', JSON.stringify(projects));
   };
 
   return {

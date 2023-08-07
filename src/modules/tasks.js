@@ -1,6 +1,5 @@
 import DOMStuff from './DOMStuff';
 import renderHomeTab from './homeTab';
-import todoStorage from './todoStorage';
 
 const createTaskContainer = (parentNode) => {
   const sectionElement = document.createElement('section');
@@ -11,13 +10,6 @@ const createTaskContainer = (parentNode) => {
   sectionElement.appendChild(elementContainer);
 
   renderHomeTab();
-
-  const taskContainer = document.createElement('div');
-  taskContainer.id = 'task-container';
-  elementContainer.appendChild(taskContainer);
-
-  if (todoStorage.getNoteList().length === 0)
-    taskContainer.style.display = 'none';
   DOMStuff.updateNoteList();
 };
 

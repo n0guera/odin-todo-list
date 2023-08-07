@@ -1,4 +1,5 @@
 import DOMStuff from './DOMStuff';
+import todoStorage from './todoStorage';
 
 const renderHomeTab = () => {
   const elementContainer = document.querySelector('#element-container');
@@ -8,6 +9,14 @@ const renderHomeTab = () => {
   pageTitle.id = 'page-title';
   pageTitle.textContent = 'Home';
   elementContainer.appendChild(pageTitle);
+
+  const taskContainer = document.createElement('div');
+  taskContainer.id = 'task-container';
+  elementContainer.appendChild(taskContainer);
+  if (todoStorage.getNoteList().length === 0)
+    taskContainer.style.display = 'none';
+
+  DOMStuff.updateNoteList();
 
   DOMStuff.createNavListItem(
     'add_circle',
