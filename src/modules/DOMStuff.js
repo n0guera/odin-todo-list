@@ -42,8 +42,17 @@ const DOMStuff = (() => {
     parentNode.appendChild(listItem);
   };
 
-  const createTaskElement = (parentNode) => {
-    const taskElement = document.createElement('article');
+  const createTaskElement = (taskName, parentNode) => {
+    const taskElement = document.createElement('button');
+    taskElement.classList.add('task');
+
+    const taskCheck = document.createElement('span');
+    taskCheck.textContent = 'check_box_outline_blank';
+    taskCheck.classList.add('material-icons');
+    taskElement.appendChild(taskCheck);
+
+    taskElement.innerHTML += taskName;
+
     parentNode.appendChild(taskElement);
   };
 
@@ -76,6 +85,10 @@ const DOMStuff = (() => {
     const projectTasks = todoStorage.getTaskList(currentProject);
 
     if (projectTasks.length === 0) taskContainer.style.display = 'none';
+
+    projectTasks.forEach((task) => {
+      createTaskElement(task.taskName, taskContainer);
+    });
   };
 
   const addNewNotePopup = () => {
@@ -192,6 +205,7 @@ const DOMStuff = (() => {
         newTaskName.value,
         newTaskDate.value
       );
+      updateTaskContainer();
     };
     acceptNewTaskBtn.addEventListener('click', addTask);
 
@@ -218,11 +232,14 @@ const DOMStuff = (() => {
 
     const taskContainer = document.createElement('div');
     taskContainer.id = 'task-container';
+    taskContainer.style.display = 'flex';
     elementContainer.appendChild(taskContainer);
     if (todoStorage.getTaskList(filteredProjectName).length === 0)
       taskContainer.style.display = 'none';
 
-    DOMStuff.createNavListItem(
+    updateTaskContainer();
+
+    createNavListItem(
       'add_circle',
       'New task',
       elementContainer,

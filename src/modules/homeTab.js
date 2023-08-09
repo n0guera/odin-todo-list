@@ -12,6 +12,7 @@ const renderHomeTab = () => {
 
   const taskContainer = document.createElement('div');
   taskContainer.id = 'task-container';
+  taskContainer.style.display = 'grid';
   elementContainer.appendChild(taskContainer);
   if (todoStorage.getNoteList().length === 0)
     taskContainer.style.display = 'none';
