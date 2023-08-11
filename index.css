@@ -8,11 +8,17 @@
   src: url(/src/font/Rubik.woff2);
 }
 
-* {
+*,
+html {
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100vh;
 }
 
 body {
@@ -45,10 +51,8 @@ footer {
 main {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  position: absolute;
-  top: 117px;
-  bottom: 40px;
   width: 100%;
+  min-height: calc(100vh - 117px - 40px);
 }
 
 nav {
@@ -153,6 +157,18 @@ section {
   margin: 16px;
 }
 
+.task {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 45%;
+  padding: 4px;
+}
+
+.task:hover {
+  background-color: #b8b5b9;
+}
+
 #new-task-btn,
 #new-note-btn,
 #new-task-btn {
@@ -178,8 +194,6 @@ section {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
