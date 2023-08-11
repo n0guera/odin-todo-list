@@ -90,12 +90,16 @@
         },
         t = (e, t) => {
           const n = document.createElement('button');
-          n.classList.add('task');
+          n.classList.add('task', 'flex', 'align-center', 'font-20px');
           const o = document.createElement('span');
           (o.textContent = 'check_box_outline_blank'),
             o.classList.add('material-icons'),
             n.appendChild(o),
-            (n.innerHTML += e),
+            (n.innerHTML += e);
+          const c = document.createElement('span');
+          (c.textContent = 'delete'),
+            c.classList.add('material-icons'),
+            n.appendChild(c),
             t.appendChild(n);
         },
         o = () => {

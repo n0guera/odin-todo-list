@@ -44,7 +44,7 @@ const DOMStuff = (() => {
 
   const createTaskElement = (taskName, parentNode) => {
     const taskElement = document.createElement('button');
-    taskElement.classList.add('task');
+    taskElement.classList.add('task', 'flex', 'align-center', 'font-20px');
 
     const taskCheck = document.createElement('span');
     taskCheck.textContent = 'check_box_outline_blank';
@@ -52,6 +52,11 @@ const DOMStuff = (() => {
     taskElement.appendChild(taskCheck);
 
     taskElement.innerHTML += taskName;
+
+    const deleteTask = document.createElement('span');
+    deleteTask.textContent = 'delete';
+    deleteTask.classList.add('material-icons');
+    taskElement.appendChild(deleteTask);
 
     parentNode.appendChild(taskElement);
   };
