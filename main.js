@@ -98,12 +98,12 @@
             (n.innerHTML += e);
           const c = document.createElement('span');
           (c.textContent = 'delete'),
-            c.classList.add('material-icons'),
+            c.classList.add('material-icons', 'delete-task'),
             n.appendChild(c),
             t.appendChild(n);
         },
         o = () => {
-          const e = document.querySelector('#task-container'),
+          const e = document.querySelector('#container'),
             t = n.getNoteList();
           (e.innerHTML = ''),
             t.forEach((t) => {
@@ -120,10 +120,11 @@
             });
         },
         c = () => {
-          const e = document.querySelector('#task-container'),
+          const e = document.querySelector('#container'),
             o = document.querySelector('#page-title').textContent,
             c = n.getTaskList(o);
-          0 === c.length && (e.style.display = 'none'),
+          (e.innerHTML = ''),
+            0 === c.length && (e.style.display = 'none'),
             c.forEach((n) => {
               t(n.taskName, e);
             });
@@ -161,8 +162,11 @@
             s.appendChild(l),
             i.addEventListener('click', (e) => {
               e.preventDefault();
-              const t = document.querySelector('#page-title').textContent;
-              o.remove(), n.storeNewTask(t, a.value, d.value), c();
+              const s = document.querySelector('#page-title').textContent;
+              o.remove(),
+                n.storeNewTask(s, a.value, d.value),
+                c(),
+                (t.style.display = 'flex');
             }),
             l.addEventListener('click', () => {
               o.remove(), (t.style.display = 'flex');
@@ -177,8 +181,8 @@
           const s = t.target.textContent.split('folder')[1];
           d.textContent = s;
           const i = document.createElement('div');
-          (i.id = 'task-container'),
-            (i.style.display = 'flex'),
+          (i.id = 'container'),
+            i.classList.add('task-container'),
             o.appendChild(i),
             0 === n.getTaskList(s).length && (i.style.display = 'none'),
             c(),
@@ -316,8 +320,8 @@
       const t = document.createElement('h2');
       (t.id = 'page-title'), (t.textContent = 'Home'), e.appendChild(t);
       const c = document.createElement('div');
-      (c.id = 'task-container'),
-        (c.style.display = 'grid'),
+      (c.id = 'container'),
+        c.classList.add('note-container'),
         e.appendChild(c),
         0 === n.getNoteList().length && (c.style.display = 'none'),
         o.updateNoteList(),
