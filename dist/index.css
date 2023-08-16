@@ -144,12 +144,16 @@ section {
   padding: 32px;
 }
 
-#task-container {
+.note-container {
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
   padding: 32px;
+}
+
+.task-container {
+  display: grid;
 }
 
 #page-title {
@@ -167,6 +171,14 @@ section {
 
 .task:hover {
   background-color: #b8b5b9;
+}
+
+.delete-task {
+  margin-left: auto;
+}
+
+.delete-task:hover {
+  cursor: pointer;
 }
 
 #new-task-btn,

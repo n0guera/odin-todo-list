@@ -10,12 +10,12 @@ const renderHomeTab = () => {
   pageTitle.textContent = 'Home';
   elementContainer.appendChild(pageTitle);
 
-  const taskContainer = document.createElement('div');
-  taskContainer.id = 'task-container';
-  taskContainer.style.display = 'grid';
-  elementContainer.appendChild(taskContainer);
+  const taskNotesContainer = document.createElement('div');
+  taskNotesContainer.id = 'container';
+  taskNotesContainer.classList.add('note-container');
+  elementContainer.appendChild(taskNotesContainer);
   if (todoStorage.getNoteList().length === 0)
-    taskContainer.style.display = 'none';
+    taskNotesContainer.style.display = 'none';
 
   DOMStuff.updateNoteList();
 

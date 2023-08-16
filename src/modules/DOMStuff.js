@@ -55,14 +55,14 @@ const DOMStuff = (() => {
 
     const deleteTask = document.createElement('span');
     deleteTask.textContent = 'delete';
-    deleteTask.classList.add('material-icons');
+    deleteTask.classList.add('material-icons', 'delete-task');
     taskElement.appendChild(deleteTask);
 
     parentNode.appendChild(taskElement);
   };
 
   const updateNoteList = () => {
-    const noteListContainer = document.querySelector('#task-container');
+    const noteListContainer = document.querySelector('#container');
     const notes = todoStorage.getNoteList();
 
     noteListContainer.innerHTML = '';
@@ -85,9 +85,11 @@ const DOMStuff = (() => {
   };
 
   const updateTaskContainer = () => {
-    const taskContainer = document.querySelector('#task-container');
+    const taskContainer = document.querySelector('#container');
     const currentProject = document.querySelector('#page-title').textContent;
     const projectTasks = todoStorage.getTaskList(currentProject);
+
+    taskContainer.innerHTML = '';
 
     if (projectTasks.length === 0) taskContainer.style.display = 'none';
 
@@ -211,6 +213,7 @@ const DOMStuff = (() => {
         newTaskDate.value
       );
       updateTaskContainer();
+      newTaskBtn.style.display = 'flex';
     };
     acceptNewTaskBtn.addEventListener('click', addTask);
 
@@ -236,8 +239,8 @@ const DOMStuff = (() => {
     pageTitleElement.textContent = filteredProjectName;
 
     const taskContainer = document.createElement('div');
-    taskContainer.id = 'task-container';
-    taskContainer.style.display = 'flex';
+    taskContainer.id = 'container';
+    taskContainer.classList.add('task-container');
     elementContainer.appendChild(taskContainer);
     if (todoStorage.getTaskList(filteredProjectName).length === 0)
       taskContainer.style.display = 'none';
