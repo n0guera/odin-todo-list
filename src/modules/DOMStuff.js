@@ -48,7 +48,7 @@ const DOMStuff = (() => {
 
     const taskCheck = document.createElement('span');
     taskCheck.textContent = 'check_box_outline_blank';
-    taskCheck.classList.add('material-icons');
+    taskCheck.classList.add('material-icons', 'task-check');
     taskElement.appendChild(taskCheck);
 
     taskElement.innerHTML += taskName;
@@ -84,6 +84,10 @@ const DOMStuff = (() => {
     });
   };
 
+  const checkTask = (e) => {
+    e.target.textContent = 'check_box';
+  };
+
   const updateTaskContainer = () => {
     const taskContainer = document.querySelector('#container');
     const currentProject = document.querySelector('#page-title').textContent;
@@ -95,6 +99,11 @@ const DOMStuff = (() => {
 
     projectTasks.forEach((task) => {
       createTaskElement(task.taskName, taskContainer);
+    });
+
+    const taskCheckElements = document.querySelectorAll('.task-check');
+    taskCheckElements.forEach((taskCheck) => {
+      taskCheck.addEventListener('click', checkTask);
     });
   };
 

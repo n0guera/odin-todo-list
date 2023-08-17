@@ -93,7 +93,7 @@
           n.classList.add('task', 'flex', 'align-center', 'font-20px');
           const o = document.createElement('span');
           (o.textContent = 'check_box_outline_blank'),
-            o.classList.add('material-icons'),
+            o.classList.add('material-icons', 'task-check'),
             n.appendChild(o),
             (n.innerHTML += e);
           const c = document.createElement('span');
@@ -119,30 +119,36 @@
                 n.appendChild(c);
             });
         },
-        c = () => {
-          const e = document.querySelector('#container'),
-            o = document.querySelector('#page-title').textContent,
-            c = n.getTaskList(o);
-          (e.innerHTML = ''),
-            0 === c.length && (e.style.display = 'none'),
-            c.forEach((n) => {
-              t(n.taskName, e);
-            });
+        c = (e) => {
+          e.target.textContent = 'check_box';
         },
         a = () => {
+          const e = document.querySelector('#container'),
+            o = document.querySelector('#page-title').textContent,
+            a = n.getTaskList(o);
+          (e.innerHTML = ''),
+            0 === a.length && (e.style.display = 'none'),
+            a.forEach((n) => {
+              t(n.taskName, e);
+            }),
+            document.querySelectorAll('.task-check').forEach((e) => {
+              e.addEventListener('click', c);
+            });
+        },
+        d = () => {
           const e = document.querySelector('#element-container'),
             t = document.querySelector('#new-task-btn');
           t.style.display = 'none';
           const o = document.createElement('form');
           (o.method = 'post'), (o.id = 'new-task-popup');
-          const a = document.createElement('input');
-          a.classList.add('font-20px'),
-            (a.type = 'text'),
-            (a.id = 'task-name'),
-            (a.name = 'taskName'),
-            (a.required = !0),
-            (a.autocomplete = 'off'),
-            o.appendChild(a);
+          const c = document.createElement('input');
+          c.classList.add('font-20px'),
+            (c.type = 'text'),
+            (c.id = 'task-name'),
+            (c.name = 'taskName'),
+            (c.required = !0),
+            (c.autocomplete = 'off'),
+            o.appendChild(c);
           const d = document.createElement('input');
           (d.type = 'date'), (d.id = 'new-task-date'), o.appendChild(d);
           const s = document.createElement('div');
@@ -164,8 +170,8 @@
               e.preventDefault();
               const s = document.querySelector('#page-title').textContent;
               o.remove(),
-                n.storeNewTask(s, a.value, d.value),
-                c(),
+                n.storeNewTask(s, c.value, d.value),
+                a(),
                 (t.style.display = 'flex');
             }),
             l.addEventListener('click', () => {
@@ -173,25 +179,25 @@
             }),
             e.appendChild(o);
         },
-        d = (t) => {
+        s = (t) => {
           const o = document.querySelector('#element-container');
           o.innerHTML = '';
-          const d = document.createElement('h2');
-          (d.id = 'page-title'), o.appendChild(d);
+          const c = document.createElement('h2');
+          (c.id = 'page-title'), o.appendChild(c);
           const s = t.target.textContent.split('folder')[1];
-          d.textContent = s;
+          c.textContent = s;
           const i = document.createElement('div');
           (i.id = 'container'),
             i.classList.add('task-container'),
             o.appendChild(i),
             0 === n.getTaskList(s).length && (i.style.display = 'none'),
-            c(),
+            a(),
             e('add_circle', 'New task', o, 'new-task-btn'),
             document
               .querySelector('#new-task-btn')
-              .addEventListener('click', a);
+              .addEventListener('click', d);
         },
-        s = () => {
+        i = () => {
           const t = document.querySelector('#nav-list-projects'),
             o = n.getProjectList();
           (t.innerHTML = ''),
@@ -199,7 +205,7 @@
               e('folder', `${n.projectName}`, t, '', 'project');
             }),
             document.querySelectorAll('.project').forEach((e) => {
-              e.addEventListener('click', d);
+              e.addEventListener('click', s);
             });
         };
       return {
@@ -217,9 +223,9 @@
         },
         createNavListItem: e,
         createTaskElement: t,
-        updateNavProjectList: s,
+        updateNavProjectList: i,
         updateNoteList: o,
-        updateTaskContainer: c,
+        updateTaskContainer: a,
         addNewProjectPopup: () => {
           const e = document.querySelector('nav'),
             t = document.querySelector('#new-project-btn');
@@ -244,20 +250,20 @@
             (d.textContent = 'Ok'),
             d.classList.add('flex', 'font-20px', 'justify-center'),
             a.appendChild(d);
-          const i = document.createElement('button');
-          (i.id = 'cancel-new-project-btn'),
-            (i.textContent = 'Cancel'),
-            i.classList.add('flex', 'font-20px', 'justify-center'),
-            a.appendChild(i),
+          const s = document.createElement('button');
+          (s.id = 'cancel-new-project-btn'),
+            (s.textContent = 'Cancel'),
+            s.classList.add('flex', 'font-20px', 'justify-center'),
+            a.appendChild(s),
             d.addEventListener('click', (e) => {
               e.preventDefault(),
                 n.validateProjectName(c.value) &&
                   (o.remove(),
                   n.storeNewProject(c.value),
-                  s(),
+                  i(),
                   (t.style.display = 'flex'));
             }),
-            i.addEventListener('click', () => {
+            s.addEventListener('click', () => {
               o.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(o);
@@ -310,8 +316,8 @@
             }),
             e.appendChild(c);
         },
-        addNewTaskPopup: a,
-        viewProject: d,
+        addNewTaskPopup: d,
+        viewProject: s,
       };
     })(),
     c = () => {
