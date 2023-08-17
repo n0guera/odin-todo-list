@@ -98,6 +98,12 @@ ul {
   width: 100%;
 }
 
+#new-note-popup,
+#new-task-popup,
+#new-project-popup {
+  margin: 8px;
+}
+
 #new-project-popup-buttons,
 #new-note-popup-buttons,
 #new-task-popup-buttons {
@@ -154,6 +160,9 @@ section {
 
 .task-container {
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 8px;
 }
 
 #page-title {
@@ -165,7 +174,6 @@ section {
   background-color: white;
   border: 1px solid black;
   border-radius: 4px;
-  width: 45%;
   padding: 4px;
 }
 
