@@ -346,7 +346,16 @@
         e.appendChild(o),
         0 === n.getTodayTasks().length && (o.style.display = 'none');
     },
-    d = () => {},
+    d = () => {
+      const e = document.querySelector('#element-container');
+      e.innerHTML = '';
+      const t = document.createElement('h2');
+      (t.id = 'page-title'), (t.textContent = 'Week'), e.appendChild(t);
+      const o = document.createElement('div');
+      (o.id = 'task-container'),
+        e.appendChild(o),
+        0 === n.getWeekTasks().length && (o.style.display = 'none');
+    },
     s = () => {
       document.querySelector('#home-tab').addEventListener('click', c),
         document.querySelector('#today-tab').addEventListener('click', a),
