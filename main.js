@@ -97,25 +97,26 @@
             })(e, t, a, o, c),
             n.appendChild(a);
         },
-        t = (e, t) => {
-          const n = document.createElement('button');
-          n.classList.add('task', 'flex', 'align-center', 'font-20px');
-          const o = document.createElement('div');
-          o.classList.add('task-left-panel', 'flex'), n.appendChild(o);
+        t = (e, t, n) => {
+          const o = document.createElement('button');
+          o.classList.add('task', 'flex', 'align-center', 'font-20px');
           const c = document.createElement('div');
-          c.classList.add('task-right-panel', 'flex'), n.appendChild(c);
-          const a = document.createElement('span');
-          (a.textContent = 'check_box_outline_blank'),
-            a.classList.add('material-icons', 'task-status'),
-            (a.dataset.taskName = e),
-            o.appendChild(a);
-          const d = document.createElement('p');
-          (d.textContent = e), o.appendChild(d);
-          const s = document.createElement('span');
-          (s.textContent = 'delete'),
-            s.classList.add('material-icons', 'delete-task'),
-            c.appendChild(s),
-            t.appendChild(n);
+          c.classList.add('task-left-panel', 'flex'), o.appendChild(c);
+          const a = document.createElement('div');
+          a.classList.add('task-right-panel', 'flex'), o.appendChild(a);
+          const d = document.createElement('span');
+          t && (d.textContent = 'check_box'),
+            t || (d.textContent = 'check_box_outline_blank'),
+            d.classList.add('material-icons', 'task-status'),
+            (d.dataset.taskName = e),
+            c.appendChild(d);
+          const s = document.createElement('p');
+          (s.textContent = e), c.appendChild(s);
+          const i = document.createElement('span');
+          (i.textContent = 'delete'),
+            i.classList.add('material-icons', 'delete-task'),
+            a.appendChild(i),
+            n.appendChild(o);
         },
         o = () => {
           const e = document.querySelector('#container'),
@@ -141,7 +142,7 @@
           (e.innerHTML = ''),
             0 === c.length && (e.style.display = 'none'),
             c.forEach((n) => {
-              t(n.taskName, e);
+              t(n.taskName, n.checked, e);
             }),
             document.querySelectorAll('.task-status').forEach((e) => {
               e.addEventListener('click', (e) => {
