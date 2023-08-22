@@ -79,7 +79,7 @@ ul {
 }
 
 .nav-btn:hover {
-  background-color: #b8b5b9;
+  background-color: rgb(220, 220, 220);
 }
 
 #tasks-title,
@@ -163,6 +163,7 @@ section {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 8px;
+  margin: 16px;
 }
 
 #page-title {
@@ -178,7 +179,11 @@ section {
 }
 
 .task:hover {
-  background-color: #b8b5b9;
+  background-color: rgb(220, 220, 220);
+}
+
+.task-left-panel {
+  margin-right: auto;
 }
 
 .delete-task {

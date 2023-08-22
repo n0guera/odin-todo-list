@@ -46,17 +46,28 @@ const DOMStuff = (() => {
     const taskElement = document.createElement('button');
     taskElement.classList.add('task', 'flex', 'align-center', 'font-20px');
 
-    const taskCheck = document.createElement('span');
-    taskCheck.textContent = 'check_box_outline_blank';
-    taskCheck.classList.add('material-icons', 'task-check');
-    taskElement.appendChild(taskCheck);
+    const taskLeftPanel = document.createElement('div');
+    taskLeftPanel.classList.add('task-left-panel', 'flex');
+    taskElement.appendChild(taskLeftPanel);
 
-    taskElement.innerHTML += taskName;
+    const taskRightPanel = document.createElement('div');
+    taskRightPanel.classList.add('task-right-panel', 'flex');
+    taskElement.appendChild(taskRightPanel);
+
+    const taskStatus = document.createElement('span');
+    taskStatus.textContent = 'check_box_outline_blank';
+    taskStatus.classList.add('material-icons', 'task-status');
+    taskStatus.dataset.taskName = taskName;
+    taskLeftPanel.appendChild(taskStatus);
+
+    const taskNameElement = document.createElement('p');
+    taskNameElement.textContent = taskName;
+    taskLeftPanel.appendChild(taskNameElement);
 
     const deleteTask = document.createElement('span');
     deleteTask.textContent = 'delete';
     deleteTask.classList.add('material-icons', 'delete-task');
-    taskElement.appendChild(deleteTask);
+    taskRightPanel.appendChild(deleteTask);
 
     parentNode.appendChild(taskElement);
   };
@@ -84,8 +95,10 @@ const DOMStuff = (() => {
     });
   };
 
-  const checkTask = (e) => {
+  const checkTask = (e, projectName) => {
+    const taskName = e.target.dataset.taskName.toString();
     e.target.textContent = 'check_box';
+    todoStorage.checkTask(projectName, taskName);
   };
 
   const updateTaskContainer = () => {
@@ -101,9 +114,11 @@ const DOMStuff = (() => {
       createTaskElement(task.taskName, taskContainer);
     });
 
-    const taskCheckElements = document.querySelectorAll('.task-check');
-    taskCheckElements.forEach((taskCheck) => {
-      taskCheck.addEventListener('click', checkTask);
+    const taskStatusElements = document.querySelectorAll('.task-status');
+    taskStatusElements.forEach((taskStatusElement) => {
+      taskStatusElement.addEventListener('click', (e) => {
+        checkTask(e, currentProject);
+      });
     });
   };
 

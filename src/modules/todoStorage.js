@@ -4,7 +4,11 @@ const todoStorage = (() => {
 
   const projectFactory = (projectName, tasks) => ({ projectName, tasks });
   const noteFactory = (noteName, noteDesc) => ({ noteName, noteDesc });
-  const taskFactory = (taskName, date) => ({ taskName, date });
+  const taskFactory = (taskName, date, checked) => ({
+    taskName,
+    date,
+    checked,
+  });
 
   const getProjectList = () =>
     JSON.parse(localStorage.getItem('projects')) || [];
@@ -49,7 +53,15 @@ const todoStorage = (() => {
     updateProjectList();
     projects
       .find((element) => element.projectName === currentProject)
-      .tasks.push(taskFactory(taskName, date));
+      .tasks.push(taskFactory(taskName, date, false));
+    localStorage.setItem('projects', JSON.stringify(projects));
+  };
+
+  const checkTask = (projectName, taskName) => {
+    updateProjectList();
+    projects
+      .find((element) => element.projectName === projectName)
+      .tasks.find((element) => element.taskName === taskName).checked = true;
     localStorage.setItem('projects', JSON.stringify(projects));
   };
 
@@ -67,6 +79,7 @@ const todoStorage = (() => {
     updateProjectList,
     updateNoteList,
     validateProjectName,
+    checkTask,
   };
 })();
 
