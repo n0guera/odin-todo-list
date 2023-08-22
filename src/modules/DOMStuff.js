@@ -42,7 +42,7 @@ const DOMStuff = (() => {
     parentNode.appendChild(listItem);
   };
 
-  const createTaskElement = (taskName, parentNode) => {
+  const createTaskElement = (taskName, checked, parentNode) => {
     const taskElement = document.createElement('button');
     taskElement.classList.add('task', 'flex', 'align-center', 'font-20px');
 
@@ -55,7 +55,8 @@ const DOMStuff = (() => {
     taskElement.appendChild(taskRightPanel);
 
     const taskStatus = document.createElement('span');
-    taskStatus.textContent = 'check_box_outline_blank';
+    if (checked) taskStatus.textContent = 'check_box';
+    if (!checked) taskStatus.textContent = 'check_box_outline_blank';
     taskStatus.classList.add('material-icons', 'task-status');
     taskStatus.dataset.taskName = taskName;
     taskLeftPanel.appendChild(taskStatus);
@@ -111,7 +112,7 @@ const DOMStuff = (() => {
     if (projectTasks.length === 0) taskContainer.style.display = 'none';
 
     projectTasks.forEach((task) => {
-      createTaskElement(task.taskName, taskContainer);
+      createTaskElement(task.taskName, task.checked, taskContainer);
     });
 
     const taskStatusElements = document.querySelectorAll('.task-status');
