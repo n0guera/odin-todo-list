@@ -74,10 +74,13 @@ const DOMStuff = (() => {
   };
 
   const updateNoteList = () => {
-    const noteListContainer = document.querySelector('#container');
+    const noteListContainer = document.querySelector('.note-container');
     const notes = todoStorage.getNoteList();
 
     noteListContainer.innerHTML = '';
+
+    if (notes.length === 0) noteListContainer.style.display = 'none';
+    if (notes.length > 0) noteListContainer.style.display = 'grid';
 
     notes.forEach((note) => {
       const noteElement = document.createElement('div');
@@ -103,13 +106,14 @@ const DOMStuff = (() => {
   };
 
   const updateTaskContainer = () => {
-    const taskContainer = document.querySelector('#container');
+    const taskContainer = document.querySelector('.task-container');
     const currentProject = document.querySelector('#page-title').textContent;
     const projectTasks = todoStorage.getTaskList(currentProject);
 
     taskContainer.innerHTML = '';
 
     if (projectTasks.length === 0) taskContainer.style.display = 'none';
+    if (projectTasks.length > 0) taskContainer.style.display = 'grid';
 
     projectTasks.forEach((task) => {
       createTaskElement(task.taskName, task.checked, taskContainer);
@@ -170,8 +174,8 @@ const DOMStuff = (() => {
 
     const addNote = (event) => {
       event.preventDefault();
-      newNotePopup.remove();
       todoStorage.storeNewNote(newNoteName.value, newNoteDesc.value);
+      newNotePopup.remove();
       updateNoteList();
       newNoteBtn.style.display = 'flex';
     };
@@ -231,12 +235,12 @@ const DOMStuff = (() => {
     const addTask = (event) => {
       event.preventDefault();
       const currentProject = document.querySelector('#page-title').textContent;
-      newTaskPopup.remove();
       todoStorage.storeNewTask(
         currentProject,
         newTaskName.value,
         newTaskDate.value
       );
+      newTaskPopup.remove();
       updateTaskContainer();
       newTaskBtn.style.display = 'flex';
     };
