@@ -42,7 +42,7 @@ const DOMStuff = (() => {
     parentNode.appendChild(listItem);
   };
 
-  const createTaskElement = (taskName, checked, parentNode) => {
+  const createTaskElement = (taskName, dueDate, checked, parentNode) => {
     const taskElement = document.createElement('button');
     taskElement.classList.add('task', 'flex', 'align-center', 'font-20px');
 
@@ -64,6 +64,10 @@ const DOMStuff = (() => {
     const taskNameElement = document.createElement('p');
     taskNameElement.textContent = taskName;
     taskLeftPanel.appendChild(taskNameElement);
+
+    const taskDueDate = document.createElement('p');
+    taskDueDate.textContent = dueDate;
+    taskRightPanel.appendChild(taskDueDate);
 
     const deleteTask = document.createElement('span');
     deleteTask.textContent = 'delete';
@@ -116,7 +120,12 @@ const DOMStuff = (() => {
     if (projectTasks.length > 0) taskContainer.style.display = 'grid';
 
     projectTasks.forEach((task) => {
-      createTaskElement(task.taskName, task.checked, taskContainer);
+      createTaskElement(
+        task.taskName,
+        task.dueDate,
+        task.checked,
+        taskContainer
+      );
     });
 
     const taskStatusElements = document.querySelectorAll('.task-status');

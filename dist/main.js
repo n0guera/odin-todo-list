@@ -97,26 +97,28 @@
             })(e, t, a, o, c),
             n.appendChild(a);
         },
-        t = (e, t, n) => {
-          const o = document.createElement('button');
-          o.classList.add('task', 'flex', 'align-center', 'font-20px');
-          const c = document.createElement('div');
-          c.classList.add('task-left-panel', 'flex'), o.appendChild(c);
+        t = (e, t, n, o) => {
+          const c = document.createElement('button');
+          c.classList.add('task', 'flex', 'align-center', 'font-20px');
           const a = document.createElement('div');
-          a.classList.add('task-right-panel', 'flex'), o.appendChild(a);
-          const d = document.createElement('span');
-          t && (d.textContent = 'check_box'),
-            t || (d.textContent = 'check_box_outline_blank'),
-            d.classList.add('material-icons', 'task-status'),
-            (d.dataset.taskName = e),
-            c.appendChild(d);
-          const s = document.createElement('p');
-          (s.textContent = e), c.appendChild(s);
-          const l = document.createElement('span');
-          (l.textContent = 'delete'),
-            l.classList.add('material-icons', 'delete-task'),
-            a.appendChild(l),
-            n.appendChild(o);
+          a.classList.add('task-left-panel', 'flex'), c.appendChild(a);
+          const d = document.createElement('div');
+          d.classList.add('task-right-panel', 'flex'), c.appendChild(d);
+          const s = document.createElement('span');
+          n && (s.textContent = 'check_box'),
+            n || (s.textContent = 'check_box_outline_blank'),
+            s.classList.add('material-icons', 'task-status'),
+            (s.dataset.taskName = e),
+            a.appendChild(s);
+          const l = document.createElement('p');
+          (l.textContent = e), a.appendChild(l);
+          const i = document.createElement('p');
+          (i.textContent = t), d.appendChild(i);
+          const r = document.createElement('span');
+          (r.textContent = 'delete'),
+            r.classList.add('material-icons', 'delete-task'),
+            d.appendChild(r),
+            o.appendChild(c);
         },
         o = () => {
           const e = document.querySelector('.note-container'),
@@ -145,7 +147,7 @@
             0 === c.length && (e.style.display = 'none'),
             c.length > 0 && (e.style.display = 'grid'),
             c.forEach((n) => {
-              t(n.taskName, n.checked, e);
+              t(n.taskName, n.dueDate, n.checked, e);
             }),
             document.querySelectorAll('.task-status').forEach((e) => {
               e.addEventListener('click', (e) => {
