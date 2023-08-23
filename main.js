@@ -57,7 +57,7 @@
             e
               .find((e) => e.projectName === t)
               .tasks.push(
-                ((e, t, n) => ({ taskName: e, date: t, checked: !1 }))(n, o)
+                ((e, t, n) => ({ taskName: e, dueDate: t, checked: !1 }))(n, o)
               ),
             localStorage.setItem('projects', JSON.stringify(e));
         },
@@ -112,16 +112,18 @@
             c.appendChild(d);
           const s = document.createElement('p');
           (s.textContent = e), c.appendChild(s);
-          const i = document.createElement('span');
-          (i.textContent = 'delete'),
-            i.classList.add('material-icons', 'delete-task'),
-            a.appendChild(i),
+          const l = document.createElement('span');
+          (l.textContent = 'delete'),
+            l.classList.add('material-icons', 'delete-task'),
+            a.appendChild(l),
             n.appendChild(o);
         },
         o = () => {
-          const e = document.querySelector('#container'),
+          const e = document.querySelector('.note-container'),
             t = n.getNoteList();
           (e.innerHTML = ''),
+            0 === t.length && (e.style.display = 'none'),
+            t.length > 0 && (e.style.display = 'grid'),
             t.forEach((t) => {
               const n = document.createElement('div');
               n.classList.add('note'), e.appendChild(n);
@@ -136,11 +138,12 @@
             });
         },
         c = () => {
-          const e = document.querySelector('#container'),
+          const e = document.querySelector('.task-container'),
             o = document.querySelector('#page-title').textContent,
             c = n.getTaskList(o);
           (e.innerHTML = ''),
             0 === c.length && (e.style.display = 'none'),
+            c.length > 0 && (e.style.display = 'grid'),
             c.forEach((n) => {
               t(n.taskName, n.checked, e);
             }),
@@ -173,26 +176,26 @@
           (s.id = 'new-task-popup-buttons'),
             s.classList.add('flex', 'font-20px'),
             o.appendChild(s);
-          const i = document.createElement('button');
-          (i.type = 'submit'),
-            (i.id = 'accept-new-task-btn'),
-            (i.textContent = 'Ok'),
-            i.classList.add('flex', 'font-20px', 'justify-center'),
-            s.appendChild(i);
           const l = document.createElement('button');
-          (l.id = 'cancel-new-task-btn'),
-            (l.textContent = 'Cancel'),
+          (l.type = 'submit'),
+            (l.id = 'accept-new-task-btn'),
+            (l.textContent = 'Ok'),
             l.classList.add('flex', 'font-20px', 'justify-center'),
-            s.appendChild(l),
-            i.addEventListener('click', (e) => {
+            s.appendChild(l);
+          const i = document.createElement('button');
+          (i.id = 'cancel-new-task-btn'),
+            (i.textContent = 'Cancel'),
+            i.classList.add('flex', 'font-20px', 'justify-center'),
+            s.appendChild(i),
+            l.addEventListener('click', (e) => {
               e.preventDefault();
               const s = document.querySelector('#page-title').textContent;
-              o.remove(),
-                n.storeNewTask(s, a.value, d.value),
+              n.storeNewTask(s, a.value, d.value),
+                o.remove(),
                 c(),
                 (t.style.display = 'flex');
             }),
-            l.addEventListener('click', () => {
+            i.addEventListener('click', () => {
               o.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(o);
@@ -204,11 +207,11 @@
           (d.id = 'page-title'), o.appendChild(d);
           const s = t.target.textContent.split('folder')[1];
           d.textContent = s;
-          const i = document.createElement('div');
-          (i.id = 'container'),
-            i.classList.add('task-container'),
-            o.appendChild(i),
-            0 === n.getTaskList(s).length && (i.style.display = 'none'),
+          const l = document.createElement('div');
+          (l.id = 'container'),
+            l.classList.add('task-container'),
+            o.appendChild(l),
+            0 === n.getTaskList(s).length && (l.style.display = 'none'),
             c(),
             e('add_circle', 'New task', o, 'new-task-btn'),
             document
@@ -268,11 +271,11 @@
             (d.textContent = 'Ok'),
             d.classList.add('flex', 'font-20px', 'justify-center'),
             a.appendChild(d);
-          const i = document.createElement('button');
-          (i.id = 'cancel-new-project-btn'),
-            (i.textContent = 'Cancel'),
-            i.classList.add('flex', 'font-20px', 'justify-center'),
-            a.appendChild(i),
+          const l = document.createElement('button');
+          (l.id = 'cancel-new-project-btn'),
+            (l.textContent = 'Cancel'),
+            l.classList.add('flex', 'font-20px', 'justify-center'),
+            a.appendChild(l),
             d.addEventListener('click', (e) => {
               e.preventDefault(),
                 n.validateProjectName(c.value) &&
@@ -281,7 +284,7 @@
                   s(),
                   (t.style.display = 'flex'));
             }),
-            i.addEventListener('click', () => {
+            l.addEventListener('click', () => {
               o.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(o);
@@ -311,25 +314,25 @@
           (s.id = 'new-note-popup-buttons'),
             s.classList.add('flex', 'font-20px'),
             c.appendChild(s);
-          const i = document.createElement('button');
-          (i.type = 'submit'),
-            (i.id = 'accept-new-note-btn'),
-            (i.textContent = 'Ok'),
-            i.classList.add('flex', 'font-20px', 'justify-center'),
-            s.appendChild(i);
           const l = document.createElement('button');
-          (l.id = 'cancel-new-note-btn'),
-            (l.textContent = 'Cancel'),
+          (l.type = 'submit'),
+            (l.id = 'accept-new-note-btn'),
+            (l.textContent = 'Ok'),
             l.classList.add('flex', 'font-20px', 'justify-center'),
-            s.appendChild(l),
-            i.addEventListener('click', (e) => {
+            s.appendChild(l);
+          const i = document.createElement('button');
+          (i.id = 'cancel-new-note-btn'),
+            (i.textContent = 'Cancel'),
+            i.classList.add('flex', 'font-20px', 'justify-center'),
+            s.appendChild(i),
+            l.addEventListener('click', (e) => {
               e.preventDefault(),
-                c.remove(),
                 n.storeNewNote(a.value, d.value),
+                c.remove(),
                 o(),
                 (t.style.display = 'flex');
             }),
-            l.addEventListener('click', () => {
+            i.addEventListener('click', () => {
               c.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(c);
