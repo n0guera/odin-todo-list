@@ -72,6 +72,7 @@ const DOMStuff = (() => {
     const deleteTask = document.createElement('span');
     deleteTask.textContent = 'delete';
     deleteTask.classList.add('material-icons', 'delete-task');
+    deleteTask.dataset.taskName = taskName;
     taskRightPanel.appendChild(deleteTask);
 
     parentNode.appendChild(taskElement);
@@ -132,6 +133,15 @@ const DOMStuff = (() => {
     taskStatusElements.forEach((taskStatusElement) => {
       taskStatusElement.addEventListener('click', (e) => {
         checkTask(e, currentProject);
+      });
+    });
+
+    const taskDeleteElements = document.querySelectorAll('.delete-task');
+    taskDeleteElements.forEach((taskDeleteElement) => {
+      taskDeleteElement.addEventListener('click', (e) => {
+        const taskName = e.target.dataset.taskName.toString();
+        todoStorage.deleteTask(currentProject, taskName);
+        updateTaskContainer();
       });
     });
   };
