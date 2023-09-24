@@ -1,6 +1,7 @@
 import DOMStuff from './DOMStuff';
 import renderHomeTab from './homeTab';
 import renderTodayTab from './todayTab';
+import todoStorage from './todoStorage';
 import renderWeekTab from './weekTab';
 
 const Buttons = (() => {
@@ -17,6 +18,14 @@ const Buttons = (() => {
     const projectElements = document.querySelectorAll('.project-item');
     projectElements.forEach((project) => {
       project.addEventListener('click', DOMStuff.viewProject);
+    });
+
+    const deleteProjectBtns = document.querySelectorAll('.delete-project-btn');
+    deleteProjectBtns.forEach((button) => {
+      button.addEventListener('click', (e) => {
+        todoStorage.deleteProject(e.target.dataset.projectName.toString());
+        DOMStuff.updateNavProjectList();
+      });
     });
 
     const newProjectBtn = document.querySelector('#new-project-btn');

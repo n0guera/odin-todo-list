@@ -328,6 +328,7 @@ const DOMStuff = (() => {
     taskContainer.id = 'container';
     taskContainer.classList.add('task-container');
     elementContainer.appendChild(taskContainer);
+
     if (todoStorage.getTaskList(projectName).length === 0)
       taskContainer.style.display = 'none';
 
@@ -354,9 +355,26 @@ const DOMStuff = (() => {
       createProjectNavItem(`${project.projectName}`, navListProjects);
     });
 
-    const projectElements = document.querySelectorAll('.project');
+    const projectElements = document.querySelectorAll('.project-item');
     projectElements.forEach((project) => {
       project.addEventListener('click', viewProject);
+    });
+
+    const deleteProjectBtns = document.querySelectorAll('.delete-project-btn');
+    deleteProjectBtns.forEach((button) => {
+      button.addEventListener('click', (element) => {
+        projectElements.forEach((project) => {
+          project.removeEventListener('click', viewProject);
+        });
+
+        const projectName = element.target.dataset.projectName.toString();
+        const elementContainer = document.querySelector('#element-container');
+        elementContainer.innerHTML = '';
+
+        todoStorage.deleteProject(projectName);
+
+        updateNavProjectList();
+      });
     });
   };
 
