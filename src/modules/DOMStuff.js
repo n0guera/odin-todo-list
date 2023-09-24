@@ -42,6 +42,45 @@ const DOMStuff = (() => {
     parentNode.appendChild(listItem);
   };
 
+  const createProjectNavItem = (projectName, parentNode) => {
+    const projectElement = document.createElement('button');
+    projectElement.classList.add(
+      'project-item',
+      'font-20px',
+      'flex',
+      'align-center'
+    );
+    projectElement.dataset.projectName = projectName;
+
+    const folderIcon = document.createElement('span');
+    folderIcon.textContent = 'folder';
+    folderIcon.classList.add('material-icons');
+    folderIcon.dataset.projectName = projectName;
+    projectElement.appendChild(folderIcon);
+
+    const projectNameElement = document.createElement('p');
+    projectNameElement.textContent = projectName;
+    projectNameElement.classList.add('project-name-element');
+    projectNameElement.dataset.projectName = projectName;
+    projectElement.appendChild(projectNameElement);
+
+    const deleteProject = document.createElement('span');
+    deleteProject.textContent = 'delete';
+    deleteProject.classList.add('material-icons', 'delete-project-btn');
+    deleteProject.dataset.projectName = projectName;
+    deleteProject.style.display = 'none';
+    projectElement.appendChild(deleteProject);
+
+    projectElement.onmouseover = () => {
+      deleteProject.style.display = 'inline-block';
+    };
+    projectElement.onmouseout = () => {
+      deleteProject.style.display = 'none';
+    };
+
+    parentNode.appendChild(projectElement);
+  };
+
   const createTaskElement = (taskName, dueDate, checked, parentNode) => {
     const taskElement = document.createElement('button');
     taskElement.classList.add('task', 'flex', 'align-center', 'font-20px');
@@ -278,19 +317,18 @@ const DOMStuff = (() => {
     const elementContainer = document.querySelector('#element-container');
     elementContainer.innerHTML = '';
 
+    const projectName = element.target.dataset.projectName.toString();
+
     const pageTitleElement = document.createElement('h2');
     pageTitleElement.id = 'page-title';
+    pageTitleElement.textContent = projectName;
     elementContainer.appendChild(pageTitleElement);
-
-    const projectName = element.target.textContent;
-    const filteredProjectName = projectName.split('folder')[1];
-    pageTitleElement.textContent = filteredProjectName;
 
     const taskContainer = document.createElement('div');
     taskContainer.id = 'container';
     taskContainer.classList.add('task-container');
     elementContainer.appendChild(taskContainer);
-    if (todoStorage.getTaskList(filteredProjectName).length === 0)
+    if (todoStorage.getTaskList(projectName).length === 0)
       taskContainer.style.display = 'none';
 
     updateTaskContainer();
@@ -313,13 +351,7 @@ const DOMStuff = (() => {
     navListProjects.innerHTML = '';
 
     projects.forEach((project) => {
-      createNavListItem(
-        'folder',
-        `${project.projectName}`,
-        navListProjects,
-        '',
-        'project'
-      );
+      createProjectNavItem(`${project.projectName}`, navListProjects);
     });
 
     const projectElements = document.querySelectorAll('.project');

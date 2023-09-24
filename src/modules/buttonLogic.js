@@ -14,7 +14,7 @@ const Buttons = (() => {
     const weekTab = document.querySelector('#week-tab');
     weekTab.addEventListener('click', renderWeekTab);
 
-    const projectElements = document.querySelectorAll('.project');
+    const projectElements = document.querySelectorAll('.project-item');
     projectElements.forEach((project) => {
       project.addEventListener('click', DOMStuff.viewProject);
     });
