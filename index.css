@@ -69,7 +69,8 @@ ul {
   list-style-type: none;
 }
 
-.nav-btn {
+.nav-btn,
+.project-item {
   cursor: pointer;
   padding: 5px;
   width: 100%;
@@ -78,7 +79,8 @@ ul {
   gap: 4px;
 }
 
-.nav-btn:hover {
+.nav-btn:hover,
+.project-item:hover {
   background-color: rgb(220, 220, 220);
 }
 
@@ -186,8 +188,13 @@ section {
   margin-right: auto;
 }
 
-.delete-task {
+.delete-task,
+.delete-project-btn {
   margin-left: auto;
+}
+
+.delete-project-btn:hover {
+  display: inline-block;
 }
 
 .delete-task:hover {
