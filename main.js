@@ -278,9 +278,21 @@
                   }),
                   t.appendChild(n);
               })(`${t.projectName}`, e);
-            }),
-            document.querySelectorAll('.project').forEach((e) => {
-              e.addEventListener('click', d);
+            });
+          const a = document.querySelectorAll('.project-item');
+          a.forEach((e) => {
+            e.addEventListener('click', d);
+          }),
+            document.querySelectorAll('.delete-project-btn').forEach((e) => {
+              e.addEventListener('click', (e) => {
+                a.forEach((e) => {
+                  e.removeEventListener('click', d);
+                });
+                const t = e.target.dataset.projectName.toString();
+                (document.querySelector('#element-container').innerHTML = ''),
+                  n.deleteProject(t),
+                  s();
+              });
             });
         };
       return {
@@ -437,6 +449,12 @@
         document.querySelector('#week-tab').addEventListener('click', d),
         document.querySelectorAll('.project-item').forEach((e) => {
           e.addEventListener('click', a.viewProject);
+        }),
+        document.querySelectorAll('.delete-project-btn').forEach((e) => {
+          e.addEventListener('click', (e) => {
+            n.deleteProject(e.target.dataset.projectName.toString()),
+              a.updateNavProjectList();
+          });
         }),
         document
           .querySelector('#new-project-btn')
