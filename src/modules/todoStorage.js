@@ -78,6 +78,14 @@ const todoStorage = (() => {
     localStorage.setItem('projects', JSON.stringify(projects));
   };
 
+  const deleteProject = (project) => {
+    updateProjectList();
+    for (let i = 0; i < projects.length; i += 1) {
+      if (projects[i].projectName === project) projects.splice(i, 1);
+    }
+    localStorage.setItem('projects', JSON.stringify(projects));
+  };
+
   return {
     projects,
     notes,
@@ -94,6 +102,7 @@ const todoStorage = (() => {
     validateProjectName,
     checkTask,
     deleteTask,
+    deleteProject,
   };
 })();
 
