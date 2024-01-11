@@ -200,6 +200,7 @@ const DOMStuff = (() => {
     newNoteName.type = 'text';
     newNoteName.id = 'note-name';
     newNoteName.name = 'noteName';
+    newNoteName.placeholder = 'Title';
     newNoteName.required = true;
     newNoteName.autocomplete = 'off';
     newNotePopup.appendChild(newNoteName);
@@ -209,6 +210,7 @@ const DOMStuff = (() => {
     newNoteDesc.type = 'text';
     newNoteDesc.id = 'note-desc';
     newNoteDesc.name = 'noteDesc';
+    newNoteDesc.placeholder = 'Description';
     newNoteDesc.required = true;
     newNotePopup.appendChild(newNoteDesc);
 
@@ -264,6 +266,7 @@ const DOMStuff = (() => {
     newTaskName.type = 'text';
     newTaskName.id = 'task-name';
     newTaskName.name = 'taskName';
+    newTaskName.placeholder = 'Title';
     newTaskName.required = true;
     newTaskName.autocomplete = 'off';
     newTaskPopup.appendChild(newTaskName);
@@ -394,6 +397,7 @@ const DOMStuff = (() => {
     newProjectName.type = 'text';
     newProjectName.id = 'project-name';
     newProjectName.name = 'projectName';
+    newProjectName.placeholder = 'Title';
     newProjectName.required = true;
     newProjectName.autocomplete = 'off';
     newProjectPopup.appendChild(newProjectName);
@@ -426,7 +430,8 @@ const DOMStuff = (() => {
     };
     acceptNewProjectBtn.addEventListener('click', addProject);
 
-    const cancelNewProject = () => {
+    const cancelNewProject = (event) => {
+      event.preventDefault();
       newProjectPopup.remove();
       newProjectBtn.style.display = 'flex';
     };

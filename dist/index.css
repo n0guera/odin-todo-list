@@ -218,6 +218,14 @@ section {
   height: auto;
 }
 
+#note-name,
+#note-desc,
+#task-name,
+#project-name {
+  font-family: Rubik;
+  padding: 2px;
+}
+
 .note {
   height: 200px;
   width: 200px;

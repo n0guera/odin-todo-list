@@ -190,6 +190,7 @@
             (c.type = 'text'),
             (c.id = 'task-name'),
             (c.name = 'taskName'),
+            (c.placeholder = 'Title'),
             (c.required = !0),
             (c.autocomplete = 'off'),
             a.appendChild(c);
@@ -324,6 +325,7 @@
             (o.type = 'text'),
             (o.id = 'project-name'),
             (o.name = 'projectName'),
+            (o.placeholder = 'Title'),
             (o.required = !0),
             (o.autocomplete = 'off'),
             a.appendChild(o);
@@ -350,8 +352,8 @@
                   s(),
                   (t.style.display = 'flex'));
             }),
-            l.addEventListener('click', () => {
-              a.remove(), (t.style.display = 'flex');
+            l.addEventListener('click', (e) => {
+              e.preventDefault(), a.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(a);
         },
@@ -366,6 +368,7 @@
             (c.type = 'text'),
             (c.id = 'note-name'),
             (c.name = 'noteName'),
+            (c.placeholder = 'Title'),
             (c.required = !0),
             (c.autocomplete = 'off'),
             o.appendChild(c);
@@ -374,6 +377,7 @@
             (d.type = 'text'),
             (d.id = 'note-desc'),
             (d.name = 'noteDesc'),
+            (d.placeholder = 'Description'),
             (d.required = !0),
             o.appendChild(d);
           const s = document.createElement('div');
