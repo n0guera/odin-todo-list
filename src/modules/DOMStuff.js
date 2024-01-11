@@ -239,7 +239,8 @@ const DOMStuff = (() => {
     };
     acceptNewNoteBtn.addEventListener('click', addNote);
 
-    const cancelNewNote = () => {
+    const cancelNewNote = (event) => {
+      event.preventDefault();
       newNotePopup.remove();
       newNoteBtn.style.display = 'flex';
     };

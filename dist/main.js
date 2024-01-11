@@ -398,8 +398,8 @@
                 a(),
                 (t.style.display = 'flex');
             }),
-            i.addEventListener('click', () => {
-              o.remove(), (t.style.display = 'flex');
+            i.addEventListener('click', (e) => {
+              e.preventDefault(), o.remove(), (t.style.display = 'flex');
             }),
             e.appendChild(o);
         },
