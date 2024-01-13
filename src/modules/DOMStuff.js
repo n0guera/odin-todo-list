@@ -140,6 +140,11 @@ const DOMStuff = (() => {
       noteDesc.classList.add('note-desc');
       noteDesc.textContent = note.noteDesc;
       noteElement.appendChild(noteDesc);
+
+      const noteDelete = document.createElement('span');
+      noteDelete.classList.add('material-icons', 'delete-note');
+      noteDelete.textContent = 'delete';
+      noteElement.appendChild(noteDelete);
     });
   };
 

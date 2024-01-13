@@ -189,15 +189,21 @@ section {
 }
 
 .delete-task,
-.delete-project-btn {
+.delete-project-btn,
+.delete-note {
   margin-left: auto;
+}
+
+.delete-note {
+  margin-top: auto;
 }
 
 .delete-project-btn:hover {
   display: inline-block;
 }
 
-.delete-task:hover {
+.delete-task:hover,
+.delete-note:hover {
   cursor: pointer;
 }
 
@@ -231,6 +237,8 @@ section {
   width: 200px;
   background-color: #f2f0e5;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 footer {
