@@ -152,6 +152,10 @@
               o.classList.add('note-desc'),
                 (o.textContent = t.noteDesc),
                 n.appendChild(o);
+              const c = document.createElement('span');
+              c.classList.add('material-icons', 'delete-note'),
+                (c.textContent = 'delete'),
+                n.appendChild(c);
             });
         },
         o = () => {
