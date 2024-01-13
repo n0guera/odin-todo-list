@@ -313,7 +313,8 @@ const DOMStuff = (() => {
     };
     acceptNewTaskBtn.addEventListener('click', addTask);
 
-    const cancelNewTask = () => {
+    const cancelNewTask = (event) => {
+      event.preventDefault();
       newTaskPopup.remove();
       newTaskBtn.style.display = 'flex';
     };
