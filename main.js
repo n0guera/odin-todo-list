@@ -91,6 +91,12 @@
             e[n].projectName === t && e.splice(n, 1);
           localStorage.setItem('projects', JSON.stringify(e));
         },
+        deleteNote: (e) => {
+          c();
+          for (let n = 0; n < t.length; n += 1)
+            t[n].noteName === e && t.splice(n, 1);
+          localStorage.setItem('notes', JSON.stringify(t));
+        },
       };
     })(),
     a = (() => {
@@ -155,7 +161,14 @@
               const c = document.createElement('span');
               c.classList.add('material-icons', 'delete-note'),
                 (c.textContent = 'delete'),
+                (c.dataset.noteName = t.noteName),
                 n.appendChild(c);
+            }),
+            document.querySelectorAll('.delete-note').forEach((e) => {
+              e.addEventListener('click', (e) => {
+                const t = e.target.dataset.noteName.toString();
+                n.deleteNote(t), a();
+              });
             });
         },
         o = () => {
