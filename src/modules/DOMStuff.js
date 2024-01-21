@@ -144,7 +144,17 @@ const DOMStuff = (() => {
       const noteDelete = document.createElement('span');
       noteDelete.classList.add('material-icons', 'delete-note');
       noteDelete.textContent = 'delete';
+      noteDelete.dataset.noteName = note.noteName;
       noteElement.appendChild(noteDelete);
+    });
+
+    const noteDeleteElements = document.querySelectorAll('.delete-note');
+    noteDeleteElements.forEach((noteDeleteElement) => {
+      noteDeleteElement.addEventListener('click', (e) => {
+        const noteName = e.target.dataset.noteName.toString();
+        todoStorage.deleteNote(noteName);
+        updateNoteList();
+      });
     });
   };
 
