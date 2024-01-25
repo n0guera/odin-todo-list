@@ -1,3 +1,5 @@
+import { isToday, parse } from 'date-fns';
+
 const todoStorage = (() => {
   let projects = [];
   let notes = [];
@@ -15,10 +17,6 @@ const todoStorage = (() => {
 
   const getNoteList = () => JSON.parse(localStorage.getItem('notes')) || [];
 
-  const getTodayTasks = () => {};
-
-  const getWeekTasks = () => {};
-
   const getTaskList = (project) =>
     getProjectList().find((element) => element.projectName === project).tasks;
 
@@ -29,6 +27,20 @@ const todoStorage = (() => {
   const updateNoteList = () => {
     notes = getNoteList();
   };
+
+  const getTodayTasks = () => {
+    const todayTasks = [];
+    updateProjectList();
+    projects.forEach((project) => {
+      project.tasks.forEach((task) => {
+        if (isToday(parse(task.dueDate, 'yyyy-MM-dd', new Date())))
+          todayTasks.push(task);
+      });
+    });
+    return todayTasks;
+  };
+
+  const getWeekTasks = () => {};
 
   const validateProjectName = (newProjectName) =>
     getProjectList().find(
