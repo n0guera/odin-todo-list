@@ -675,24 +675,24 @@
       );
     return e;
   }
-  function N(e, t) {
+  function S(e, t) {
     return (
-      (N = Object.setPrototypeOf
+      (S = Object.setPrototypeOf
         ? Object.setPrototypeOf.bind()
         : function (e, t) {
             return (e.__proto__ = t), e;
           }),
-      N(e, t)
+      S(e, t)
     );
   }
-  function S(e, t) {
+  function N(e, t) {
     if ('function' != typeof t && null !== t)
       throw new TypeError('Super expression must either be null or a function');
     (e.prototype = Object.create(t && t.prototype, {
       constructor: { value: e, writable: !0, configurable: !0 },
     })),
       Object.defineProperty(e, 'prototype', { writable: !1 }),
-      t && N(e, t);
+      t && S(e, t);
   }
   function D(e) {
     return (
@@ -800,8 +800,8 @@
         e
       );
     })(),
-    Y = (function (e) {
-      S(n, e);
+    O = (function (e) {
+      N(n, e);
       var t = L(n);
       function n(e, r, a, o, i) {
         var u;
@@ -833,8 +833,8 @@
         n
       );
     })(A),
-    O = (function (e) {
-      S(n, e);
+    Y = (function (e) {
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -889,7 +889,7 @@
               var a = this.parse(e, t, n, r);
               return a
                 ? {
-                    setter: new Y(
+                    setter: new O(
                       a.value,
                       this.validate,
                       this.set,
@@ -912,7 +912,7 @@
       );
     })(),
     W = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1070,7 +1070,7 @@
     return e % 400 == 0 || (e % 4 == 0 && e % 100 != 0);
   }
   var ge = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1231,7 +1231,7 @@
       : h - 1;
   }
   var xe = (function (e) {
-    S(n, e);
+    N(n, e);
     var t = L(n);
     function n() {
       var e;
@@ -1313,8 +1313,8 @@
       o = (n < 1 ? 7 : 0) + n - 1;
     return t.setUTCDate(t.getUTCDate() - o), t.setUTCHours(0, 0, 0, 0), t;
   }
-  var Ne = (function (e) {
-      S(n, e);
+  var Se = (function (e) {
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1364,8 +1364,8 @@
         n
       );
     })(H),
-    Se = (function (e) {
-      S(n, e);
+    Ne = (function (e) {
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1409,7 +1409,7 @@
       );
     })(H),
     De = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1492,7 +1492,7 @@
       );
     })(H),
     Le = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1575,7 +1575,7 @@
       );
     })(H),
     Pe = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1655,7 +1655,7 @@
       );
     })(H),
     je = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1735,7 +1735,7 @@
       );
     })(H);
   var Me = (function (e) {
-    S(n, e);
+    N(n, e);
     var t = L(n);
     function n() {
       var e;
@@ -1894,7 +1894,7 @@
     return n.setUTCDate(n.getUTCDate() - 7 * i), n;
   }
   var qe = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -1954,9 +1954,9 @@
       );
     })(H),
     Ae = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-    Ye = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-    Oe = (function (e) {
-      S(n, e);
+    Oe = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+    Ye = (function (e) {
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2003,7 +2003,7 @@
             value: function (e, t) {
               var n = we(e.getUTCFullYear()),
                 r = e.getUTCMonth();
-              return n ? t >= 1 && t <= Ye[r] : t >= 1 && t <= Ae[r];
+              return n ? t >= 1 && t <= Oe[r] : t >= 1 && t <= Ae[r];
             },
           },
           {
@@ -2017,7 +2017,7 @@
       );
     })(H),
     He = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2122,7 +2122,7 @@
     return p.setUTCDate(p.getUTCDate() + w), p;
   }
   var Ie = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2183,7 +2183,7 @@
       );
     })(H),
     Re = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2267,7 +2267,7 @@
       );
     })(H),
     Fe = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2351,7 +2351,7 @@
       );
     })(H),
     Qe = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2454,7 +2454,7 @@
       );
     })(H),
     Xe = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2511,7 +2511,7 @@
       );
     })(H),
     Be = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2568,7 +2568,7 @@
       );
     })(H),
     Je = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2625,7 +2625,7 @@
       );
     })(H),
     _e = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2678,7 +2678,7 @@
       );
     })(H),
     Ge = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2723,7 +2723,7 @@
       );
     })(H),
     Ve = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2773,7 +2773,7 @@
       );
     })(H),
     $e = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2819,7 +2819,7 @@
       );
     })(H),
     ze = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2864,7 +2864,7 @@
       );
     })(H),
     Ke = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2909,7 +2909,7 @@
       );
     })(H),
     Ze = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2943,7 +2943,7 @@
       );
     })(H),
     et = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -2986,7 +2986,7 @@
       );
     })(H),
     tt = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -3029,7 +3029,7 @@
       );
     })(H),
     nt = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -3061,7 +3061,7 @@
       );
     })(H),
     rt = (function (e) {
-      S(n, e);
+      N(n, e);
       var t = L(n);
       function n() {
         var e;
@@ -3096,15 +3096,15 @@
       G: new W(),
       y: new ge(),
       Y: new xe(),
-      R: new Ne(),
-      u: new Se(),
+      R: new Se(),
+      u: new Ne(),
       Q: new De(),
       q: new Le(),
       M: new Pe(),
       L: new je(),
       w: new Me(),
       I: new qe(),
-      d: new Oe(),
+      d: new Ye(),
       D: new He(),
       E: new Ie(),
       e: new Re(),
@@ -3132,12 +3132,12 @@
     st = /\S/,
     lt = /[a-zA-Z]/;
   function dt(e, t, o, i) {
-    var c, s, l, d, f, h, m, w, g, b, E, N, S, D, L, P, j, M;
+    var c, s, l, d, f, h, m, w, g, b, E, S, N, D, L, P, j, M;
     r(3, arguments);
     var U = String(e),
       q = String(t),
       A = ke(),
-      Y =
+      O =
         null !==
           (c =
             null !== (s = null == i ? void 0 : i.locale) && void 0 !== s
@@ -3145,7 +3145,7 @@
               : A.locale) && void 0 !== c
           ? c
           : p;
-    if (!Y.match) throw new RangeError('locale must contain match property');
+    if (!O.match) throw new RangeError('locale must contain match property');
     var H = v(
       null !==
         (l =
@@ -3183,9 +3183,9 @@
       null !==
         (E =
           null !==
-            (N =
+            (S =
               null !==
-                (S =
+                (N =
                   null !== (D = null == i ? void 0 : i.weekStartsOn) &&
                   void 0 !== D
                     ? D
@@ -3195,10 +3195,10 @@
                       null === (P = L.options) ||
                       void 0 === P
                     ? void 0
-                    : P.weekStartsOn) && void 0 !== S
-                ? S
-                : A.weekStartsOn) && void 0 !== N
-            ? N
+                    : P.weekStartsOn) && void 0 !== N
+                ? N
+                : A.weekStartsOn) && void 0 !== S
+            ? S
             : null === (j = A.locale) ||
               void 0 === j ||
               null === (M = j.options) ||
@@ -3212,13 +3212,13 @@
       throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
     if ('' === q) return '' === U ? a(o) : new Date(NaN);
     var I,
-      R = { firstWeekContainsDate: H, weekStartsOn: W, locale: Y },
-      F = [new O()],
+      R = { firstWeekContainsDate: H, weekStartsOn: W, locale: O },
+      F = [new Y()],
       Q = q
         .match(it)
         .map(function (e) {
           var t = e[0];
-          return t in k ? (0, k[t])(e, Y.formatLong) : e;
+          return t in k ? (0, k[t])(e, O.formatLong) : e;
         })
         .join('')
         .match(ot),
@@ -3259,7 +3259,7 @@
               )
             );
           X.push({ token: n, fullToken: t });
-          var u = r.run(U, t, Y.match, R);
+          var u = r.run(U, t, O.match, R);
           if (!u) return { v: new Date(NaN) };
           F.push(u.setter), (U = u.rest);
         } else {
@@ -3354,7 +3354,47 @@
     }
     return z;
   }
-  const ft = (() => {
+  function ft(e, t) {
+    var n, o, i, u, c, s, l, d;
+    r(1, arguments);
+    var f = ke(),
+      h = v(
+        null !==
+          (n =
+            null !==
+              (o =
+                null !==
+                  (i =
+                    null !== (u = null == t ? void 0 : t.weekStartsOn) &&
+                    void 0 !== u
+                      ? u
+                      : null == t ||
+                        null === (c = t.locale) ||
+                        void 0 === c ||
+                        null === (s = c.options) ||
+                        void 0 === s
+                      ? void 0
+                      : s.weekStartsOn) && void 0 !== i
+                  ? i
+                  : f.weekStartsOn) && void 0 !== o
+              ? o
+              : null === (l = f.locale) ||
+                void 0 === l ||
+                null === (d = l.options) ||
+                void 0 === d
+              ? void 0
+              : d.weekStartsOn) && void 0 !== n
+          ? n
+          : 0
+      );
+    if (!(h >= 0 && h <= 6))
+      throw new RangeError('weekStartsOn must be between 0 and 6 inclusively');
+    var m = a(e),
+      p = m.getDay(),
+      y = (p < h ? 7 : 0) + p - h;
+    return m.setDate(m.getDate() - y), m.setHours(0, 0, 0, 0), m;
+  }
+  const ht = (() => {
       let e = [],
         t = [];
       const n = () => JSON.parse(localStorage.getItem('projects')) || [],
@@ -3411,7 +3451,30 @@
             t
           );
         },
-        getWeekTasks: () => {},
+        getWeekTasks: () => {
+          const t = [];
+          return (
+            i(),
+            e.forEach((e) => {
+              e.tasks.forEach((e) => {
+                (function (e, t) {
+                  return (
+                    r(1, arguments),
+                    (function (e, t, n) {
+                      r(2, arguments);
+                      var a = ft(e, n),
+                        o = ft(t, n);
+                      return a.getTime() === o.getTime();
+                    })(e, Date.now(), t)
+                  );
+                })(dt(e.dueDate, 'yyyy-MM-dd', new Date()), {
+                  weekStartsOn: 1,
+                }) && t.push(e);
+              });
+            }),
+            t
+          );
+        },
         getTaskList: (e) => n().find((t) => t.projectName === e).tasks,
         updateProjectList: i,
         updateNoteList: u,
@@ -3446,7 +3509,7 @@
         },
       };
     })(),
-    ht = (() => {
+    mt = (() => {
       const e = (e, t, n, r, a) => {
           const o = document.createElement('li');
           o.classList.add('nav-item'),
@@ -3490,7 +3553,7 @@
         },
         n = () => {
           const e = document.querySelector('.note-container'),
-            t = ft.getNoteList();
+            t = ht.getNoteList();
           (e.innerHTML = ''),
             0 === t.length && (e.style.display = 'none'),
             t.length > 0 && (e.style.display = 'grid'),
@@ -3514,14 +3577,14 @@
             document.querySelectorAll('.delete-note').forEach((e) => {
               e.addEventListener('click', (e) => {
                 const t = e.target.dataset.noteName.toString();
-                ft.deleteNote(t), n();
+                ht.deleteNote(t), n();
               });
             });
         },
         r = () => {
           const e = document.querySelector('.task-container'),
             n = document.querySelector('#page-title').textContent,
-            a = ft.getTaskList(n);
+            a = ht.getTaskList(n);
           (e.innerHTML = ''),
             0 === a.length && (e.style.display = 'none'),
             a.length > 0 && (e.style.display = 'grid'),
@@ -3532,14 +3595,14 @@
               e.addEventListener('click', (e) => {
                 ((e, t) => {
                   const n = e.target.dataset.taskName.toString();
-                  (e.target.textContent = 'check_box'), ft.checkTask(t, n);
+                  (e.target.textContent = 'check_box'), ht.checkTask(t, n);
                 })(e, n);
               });
             }),
             document.querySelectorAll('.delete-task').forEach((e) => {
               e.addEventListener('click', (e) => {
                 const t = e.target.dataset.taskName.toString();
-                ft.deleteTask(n, t), r();
+                ht.deleteTask(n, t), r();
               });
             });
         },
@@ -3578,7 +3641,7 @@
             u.addEventListener('click', (e) => {
               e.preventDefault();
               const i = document.querySelector('#page-title').textContent;
-              ft.storeNewTask(i, a.value, o.value),
+              ht.storeNewTask(i, a.value, o.value),
                 n.remove(),
                 r(),
                 (t.style.display = 'flex');
@@ -3598,7 +3661,7 @@
           (u.id = 'container'),
             u.classList.add('task-container'),
             n.appendChild(u),
-            0 === ft.getTaskList(o).length && (u.style.display = 'none'),
+            0 === ht.getTaskList(o).length && (u.style.display = 'none'),
             r(),
             e('add_circle', 'New task', n, 'new-task-btn'),
             document
@@ -3607,7 +3670,7 @@
         },
         i = () => {
           const e = document.querySelector('#nav-list-projects'),
-            t = ft.getProjectList();
+            t = ht.getProjectList();
           (e.innerHTML = ''),
             t.forEach((t) => {
               ((e, t) => {
@@ -3655,7 +3718,7 @@
                 });
                 const t = e.target.dataset.projectName.toString();
                 (document.querySelector('#element-container').innerHTML = ''),
-                  ft.deleteProject(t),
+                  ht.deleteProject(t),
                   i();
               });
             });
@@ -3710,9 +3773,9 @@
             a.appendChild(u),
             o.addEventListener('click', (e) => {
               e.preventDefault(),
-                ft.validateProjectName(r.value) &&
+                ht.validateProjectName(r.value) &&
                   (n.remove(),
-                  ft.storeNewProject(r.value),
+                  ht.storeNewProject(r.value),
                   i(),
                   (t.style.display = 'flex'));
             }),
@@ -3761,7 +3824,7 @@
             i.appendChild(c),
             u.addEventListener('click', (e) => {
               e.preventDefault(),
-                ft.storeNewNote(a.value, o.value),
+                ht.storeNewNote(a.value, o.value),
                 r.remove(),
                 n(),
                 (t.style.display = 'flex');
@@ -3775,7 +3838,7 @@
         viewProject: o,
       };
     })(),
-    mt = () => {
+    pt = () => {
       const e = document.querySelector('#element-container');
       e.innerHTML = '';
       const t = document.createElement('h2');
@@ -3784,14 +3847,14 @@
       (n.id = 'container'),
         n.classList.add('note-container'),
         e.appendChild(n),
-        0 === ft.getNoteList().length && (n.style.display = 'none'),
-        ht.updateNoteList(),
-        ht.createNavListItem('add_circle', 'New note', e, 'new-note-btn'),
+        0 === ht.getNoteList().length && (n.style.display = 'none'),
+        mt.updateNoteList(),
+        mt.createNavListItem('add_circle', 'New note', e, 'new-note-btn'),
         document
           .querySelector('#new-note-btn')
-          .addEventListener('click', ht.addNewNotePopup);
+          .addEventListener('click', mt.addNewNotePopup);
     },
-    pt = () => {
+    vt = () => {
       const e = document.querySelector('#element-container');
       e.innerHTML = '';
       const t = document.createElement('h2');
@@ -3800,40 +3863,44 @@
       (n.id = 'container'),
         n.classList.add('task-container'),
         e.appendChild(n),
-        0 === ft.getTodayTasks().length && (n.style.display = 'none'),
-        ft.getTodayTasks().forEach((e) => {
-          ht.createTaskElement(e.taskName, e.dueDate, e.checked, n);
+        0 === ht.getTodayTasks().length && (n.style.display = 'none'),
+        ht.getTodayTasks().forEach((e) => {
+          mt.createTaskElement(e.taskName, e.dueDate, e.checked, n);
         });
     },
-    vt = () => {
+    yt = () => {
       const e = document.querySelector('#element-container');
       e.innerHTML = '';
       const t = document.createElement('h2');
       (t.id = 'page-title'), (t.textContent = 'Week'), e.appendChild(t);
       const n = document.createElement('div');
-      (n.id = 'task-container'),
+      (n.id = 'container'),
+        n.classList.add('task-container'),
         e.appendChild(n),
-        0 === ft.getWeekTasks().length && (n.style.display = 'none');
+        0 === ht.getWeekTasks().length && (n.style.display = 'none'),
+        ht.getWeekTasks().forEach((e) => {
+          mt.createTaskElement(e.taskName, e.dueDate, e.checked, n);
+        });
     },
-    yt = () => {
-      document.querySelector('#home-tab').addEventListener('click', mt),
-        document.querySelector('#today-tab').addEventListener('click', pt),
-        document.querySelector('#week-tab').addEventListener('click', vt),
+    wt = () => {
+      document.querySelector('#home-tab').addEventListener('click', pt),
+        document.querySelector('#today-tab').addEventListener('click', vt),
+        document.querySelector('#week-tab').addEventListener('click', yt),
         document.querySelectorAll('.project-item').forEach((e) => {
-          e.addEventListener('click', ht.viewProject);
+          e.addEventListener('click', mt.viewProject);
         }),
         document.querySelectorAll('.delete-project-btn').forEach((e) => {
           e.addEventListener('click', (e) => {
-            ft.deleteProject(e.target.dataset.projectName.toString()),
-              ht.updateNavProjectList();
+            ht.deleteProject(e.target.dataset.projectName.toString()),
+              mt.updateNavProjectList();
           });
         }),
         document
           .querySelector('#new-project-btn')
-          .addEventListener('click', ht.addNewProjectPopup),
+          .addEventListener('click', mt.addNewProjectPopup),
         document
           .querySelector('#new-note-btn')
-          .addEventListener('click', ht.addNewNotePopup);
+          .addEventListener('click', mt.addNewNotePopup);
     };
   (() => {
     const e = document.createElement('header'),
@@ -3864,9 +3931,9 @@
           const r = document.createElement('ul');
           r.setAttribute('id', 'nav-list-tasks'),
             t.appendChild(r),
-            ht.createNavListItem('home', 'Home', r, 'home-tab'),
-            ht.createNavListItem('today', 'Today', r, 'today-tab'),
-            ht.createNavListItem('date_range', 'Week', r, 'week-tab');
+            mt.createNavListItem('home', 'Home', r, 'home-tab'),
+            mt.createNavListItem('today', 'Today', r, 'today-tab'),
+            mt.createNavListItem('date_range', 'Week', r, 'week-tab');
           const a = document.createElement('h2');
           (a.textContent = 'Projects'),
             (a.id = 'projects-title'),
@@ -3874,7 +3941,7 @@
           const o = document.createElement('ul');
           o.setAttribute('id', 'nav-list-projects'),
             t.appendChild(o),
-            ht.createNavListItem(
+            mt.createNavListItem(
               'add_circle',
               'New project',
               t,
@@ -3888,8 +3955,8 @@
           const n = document.createElement('div');
           (n.id = 'element-container'),
             t.appendChild(n),
-            mt(),
-            ht.updateNoteList();
+            pt(),
+            mt.updateNoteList();
         })(e);
     })(),
     (() => {
@@ -3900,6 +3967,6 @@
         e.appendChild(t),
         document.body.appendChild(e);
     })(),
-    window.addEventListener('load', ht.updateNavProjectList()),
-    yt();
+    window.addEventListener('load', mt.updateNavProjectList()),
+    wt();
 })();
