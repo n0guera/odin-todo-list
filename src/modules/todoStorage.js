@@ -1,4 +1,4 @@
-import { isToday, parse } from 'date-fns';
+import { isThisWeek, isToday, parse } from 'date-fns';
 
 const todoStorage = (() => {
   let projects = [];
@@ -40,7 +40,21 @@ const todoStorage = (() => {
     return todayTasks;
   };
 
-  const getWeekTasks = () => {};
+  const getWeekTasks = () => {
+    const weekTasks = [];
+    updateProjectList();
+    projects.forEach((project) => {
+      project.tasks.forEach((task) => {
+        if (
+          isThisWeek(parse(task.dueDate, 'yyyy-MM-dd', new Date()), {
+            weekStartsOn: 1,
+          })
+        )
+          weekTasks.push(task);
+      });
+    });
+    return weekTasks;
+  };
 
   const validateProjectName = (newProjectName) =>
     getProjectList().find(
