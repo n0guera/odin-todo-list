@@ -1,11 +1,11 @@
 @font-face {
   font-family: Norse-Bold;
-  src: url(/src/font/Norse-Bold.otf);
+  src: url('/src/font/Norse-Bold.otf'), format('otf');
 }
 
 @font-face {
   font-family: Rubik;
-  src: url(/src/font/Rubik.woff2);
+  src: url('/src/font/Rubik.woff2'), format('woff2');
 }
 
 *,
